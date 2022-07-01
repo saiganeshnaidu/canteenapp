@@ -1,0 +1,8 @@
+<h2> This is index page of foodstores </h2>
+
+
+<% @foodstores.each do |x| %>
+<%= link_to x.name, x %> <br><br>
+<% end %>
+<br> <br> <br>
+<%= link_to "Add new food store", new_foodstore_path %>
