@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    enum role: [:Admin, :Employee, :Chef]
     
     has_secure_password
 

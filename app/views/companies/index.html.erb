@@ -1,0 +1,5 @@
+<% @companies.each do |x| %>
+    <%= link_to x.name, x %> <br><br>
+    <% end %>
+    <br> <br> <br>
+    <%= link_to "Add new company", new_company_path %>

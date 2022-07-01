@@ -1,12 +1,11 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
 
-<h2> Authentication part </h2>
 
 
 <% if Current.user %>
-    Logged in as: <%= Current.user.email %><br>
-    <%= link_to 'Edit Password', edit_password_path %>
+    Logged in as: <%= Current.user.email %><br><br>
+    <%= link_to 'Edit Password', edit_password_path %><br><br>
     <%= button_to 'Logout', logout_path, method: :delete %>
     <% else %>
     <%= link_to 'Sign Up', sign_up_path %>
