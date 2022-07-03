@@ -12,3 +12,10 @@
     or
     <%= link_to 'Login', sign_in_path %>
   <% end %>
+
+
+  <% if Current.user %>
+    <% if Current.user.email=="ganesh@gmail.com" %>
+      <%= "Admin is logged in" %>
+    <% end %>
+  <% end %>

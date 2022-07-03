@@ -1,0 +1,7 @@
+<h2> Food categories show page </h2>
+
+<p> <%=@foodcategories.name %> </p>
+
+ <%= link_to "Edit", edit_foodcategory_path %> 
+
+<%= button_to "Destroy", @foodcategories, method: :delete %>

@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   patch 'password/reset/edit', to: 'password_resets#update'
   
   resources :foodstores
-
-
+resources :foodcategories
   resources :companies
 
 
