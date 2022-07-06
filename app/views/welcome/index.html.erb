@@ -4,7 +4,7 @@
 
 
 <% if Current.user %>
-    Logged in as: <%= Current.user.email %><br><br>
+    Logged in as: <%= Current.user.usertype %><br><br>
     <%= link_to 'Edit Password', edit_password_path %><br><br>
     <%= button_to 'Logout', logout_path, method: :delete %>
     <% else %>
