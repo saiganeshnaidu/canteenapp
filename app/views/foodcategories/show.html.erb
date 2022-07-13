@@ -5,3 +5,26 @@
  <%= link_to "Edit", edit_foodcategory_path %> 
 
 <%= button_to "Destroy", @foodcategories, method: :delete %>
+
+
+<h2>foodstores</h2>
+<% @foodcategories.foodstores.each do |f| %>
+  <p>
+    <strong>name:</strong>
+    <%= f.name %>
+    <%= button_to "Delete foodstore", @foodstore, method: :delete %>
+
+  </p>
+<% end %>
+
+
+<h2>Add a foodstore:</h2>
+<%= form_with model: [ @foodcategories, @foodcategories.foodstores.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
