@@ -2,7 +2,7 @@
 
 <p> <%=@foodcategories.name %> </p>
 
- <%= link_to "Edit", edit_foodcategory_path %> 
+ <%= link_to "Edit", edit_foodcategory_path %> <br><br>
 
 <%= button_to "Destroy", @foodcategories, method: :delete %>
 
@@ -11,9 +11,9 @@
 <% @foodcategories.foodstores.each do |f| %>
   <p>
     <strong>name:</strong>
-    <%= f.name %>
-    <%= button_to "Delete foodstore", @foodstore, method: :delete %>
-
+    <%= link_to f.name, foodcategory_path %>
+    <%= button_to "Delete foodstore", [f.foodcategory, f], method: :delete %>
+    <br><br><br>
   </p>
 <% end %>
 
