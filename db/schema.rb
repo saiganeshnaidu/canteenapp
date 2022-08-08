@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_065346) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_07_062934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,10 +20,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_065346) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "employee_profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.bigint "user_id", null: false
+    t.bigint "company_id", null: false
+    t.boolean "isapproved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "isrejected"
+    t.index ["company_id"], name: "index_employee_profiles_on_company_id"
+    t.index ["user_id"], name: "index_employee_profiles_on_user_id"
+  end
+
   create_table "foodcategories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "fooditems", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.text "description"
+    t.bigint "foodstore_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["foodstore_id"], name: "index_fooditems_on_foodstore_id"
   end
 
   create_table "foodstores", force: :cascade do |t|
@@ -42,5 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_065346) do
     t.string "usertype"
   end
 
+  add_foreign_key "employee_profiles", "companies"
+  add_foreign_key "employee_profiles", "users"
+  add_foreign_key "fooditems", "foodstores"
   add_foreign_key "foodstores", "foodcategories"
 end

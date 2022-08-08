@@ -1,7 +1,4 @@
 <h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
-
-
 
 <% if Current.user %>
     Logged in as: <%= Current.user.usertype %><br><br>
@@ -14,8 +11,20 @@
   <% end %>
 
 
-  <% if Current.user %>
-    <% if Current.user.email=="ganesh@gmail.com" %>
-      <%= "Admin is logged in" %>
+  <% if Current.user  %>
+    <% if Current.user.usertype=="Admin" && Current.user.email=="ganesh@gmail.com"%>
+    <h4> users request </h4>
+    <%= link_to 'Accept/reject', employee_profiles_path %>
     <% end %>
-  <% end %>
+    <% end %>
+
+<% if Current.user %>
+<% if Current.user.usertype=="Employee" && Current.user.employee_profile.isapproved %>
+    <h4> You have already filled the details click below to continue </h4>
+    <%= link_to "continue", Current.user.employee_profile %>
+<% end %>
+<% if Current.user.usertype=="Employee" && !Current.user.employee_profile.isapproved %>
+    <h4> You have already filled the details click below to continue </h4>
+    <%= link_to "continue", employee_profiles_path %>
+<% end %>
+<% end %>

@@ -14,9 +14,14 @@ Rails.application.routes.draw do
   patch 'password/reset/edit', to: 'password_resets#update'
   
   resources :foodcategories do
-  resources :foodstores
+    resources :foodstores do
+      resources :fooditems
+    end
   end
+  resources :employee_profiles
   resources :companies
+  resources :registrations
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

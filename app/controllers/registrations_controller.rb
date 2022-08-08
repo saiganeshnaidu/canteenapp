@@ -8,10 +8,20 @@ class RegistrationsController < ApplicationController
       if @user.save
       # stores saved user id in a session
         session[:user_id] = @user.id
-        redirect_to root_path, notice: 'Successfully created account'
+        if (@user.usertype=="Employee")
+        redirect_to new_employee_profile_path, notice: 'Successfully created account'
+        else
+          redirect_to root_path, notice: 'Successfully created account'
+        end
       else
         render :new
       end
+    end
+    def destroy
+      @user = User.find(params[:id])
+          @user.destroy
+      
+          redirect_to root_path, status: :see_other
     end
     private
     def user_params

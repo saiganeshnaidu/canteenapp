@@ -1,3 +1,46 @@
 <h1> foodstore show </h1>
 
 <%= @foodstore.name %>
+
+<h2> Food items list </h2>
+<% @foodstore.fooditems.each do |f| %>
+    <p>
+      <strong>name:</strong>
+      <%=  f.name %>
+    </p>
+    <p>
+      <strong>price:</strong>
+      <%=  f.price %>
+    </p>
+    <p>
+    <strong>description:</strong>
+    <%=  f.description %>
+    <br><br><br>
+  </p>
+  <% end %>
+
+  <h2>Create new fooditem </h2>
+  <%= form_with model: @fooditem do |form| %>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :price %><br>
+      <%= form.number_field :price %>
+    </div>
+    <div>
+      <%= form.label :description %><br>
+      <%= form.text_field :description %>
+    </div>
+  
+    <div>
+      <%= form.label :foodstore_id %><br>
+      <%= form.hidden_field :foodstore_id, value: @foodstore.id %>
+    </div>
+  <br>  <br>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>

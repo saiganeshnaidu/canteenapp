@@ -1,0 +1,22 @@
+<% @emp_pro.each do |x| %>
+    <% if Current.user.id==x.user_id %>
+<% if !(x.isapproved) && !(x.isrejected) %>
+<p> Please wait the admin have to approve you</p>
+<% elsif x.isrejected %>
+<%= %>
+<% else %>
+<h4>Admin approved your profile </h4>
+<%= link_to 'Click here to continue', x %>
+<% end %>
+<% end %>
+<% end %>
+
+<% @emp_pro.each do |x| %>
+    <% if Current.user.usertype=="Admin" && Current.user.email=="ganesh@gmail.com"%>
+    <% if !(x.isapproved) && !(x.isrejected) %>
+    <%=link_to x.name, edit_employee_profile_path(x) %>
+    <br> <br>
+    <% end %>
+    <% end %>
+
+<% end %>

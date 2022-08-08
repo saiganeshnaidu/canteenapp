@@ -1,0 +1,26 @@
+<h2> Complete your profile </h2>
+<%= form_with model: @emp_pro do |form| %>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :phone %><br>
+      <%= form.text_field :phone %>
+    </div>
+    <div>
+      <%= form.label :user_id %><br>
+      <%= form.hidden_field :user_id, value: Current.user.id %>
+
+    </div>
+    <div>
+    <%= form.label :company_id %><br>
+    <%= form.number_field :company_id%>
+  
+   
+  <br>  <br>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>

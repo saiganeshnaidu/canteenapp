@@ -1,0 +1,16 @@
+<h3> Edit the company name </h3>
+
+
+<% form_with model: @emp_pro do |form| %>
+    <div>
+      <%= form.label :isapproved %><br>
+      <%= form.number_field :isapproved %>
+    </div>
+    <div>
+        <%= form.label :isrejected %><br>
+        <%= form.number_field :isrejected %>
+      </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
