@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
   resources :employee_profiles
+  resources :chefprofiles
+
   resources :companies
   resources :registrations
 

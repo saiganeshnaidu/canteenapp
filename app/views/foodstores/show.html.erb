@@ -20,7 +20,7 @@
   <% end %>
 
   <h2>Create new fooditem </h2>
-  <%= form_with model: @fooditem do |form| %>
+  <%= form_with model:[@foodcategory,@foodstore, @foodstore.fooditems.build] do |form| %>
     <div>
       <%= form.label :name %><br>
       <%= form.text_field :name %>

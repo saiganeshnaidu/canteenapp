@@ -10,6 +10,9 @@ class RegistrationsController < ApplicationController
         session[:user_id] = @user.id
         if (@user.usertype=="Employee")
         redirect_to new_employee_profile_path, notice: 'Successfully created account'
+        elsif (@user.usertype=="Chef")
+          redirect_to new_chefprofile_path, notice: 'Successfully created account'
+
         else
           redirect_to root_path, notice: 'Successfully created account'
         end

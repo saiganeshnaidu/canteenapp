@@ -1,5 +1,5 @@
 <h2> Complete your profile </h2>
-<%= form_with model: @emp_pro do |form| %>
+<%= form_with model: @chef_pro do |form| %>
     <div>
       <%= form.label :name %><br>
       <%= form.text_field :name %>
@@ -13,8 +13,8 @@
 
     </div>
     <div>
-    <%= form.label :company_id %><br>
-    <%= form.number_field :company_id%>
+    <%= form.label :foodstore_id %><br>
+    <%= form.number_field :foodstore_id%>
  <% collection_select(:emp_pro, :company_id, Company.all, :id, :name, prompt: true) %> 
 
     </div>

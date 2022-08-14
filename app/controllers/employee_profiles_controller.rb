@@ -11,11 +11,8 @@ class EmployeeProfilesController < ApplicationController
       
   
         if @emp_pro.save
-            if @emp_pro.isapproved
-                redirect_to root_path
-            else
                 redirect_to employee_profiles_path
-            end
+
         else
           render :new, status: :unprocessable_entity
         end    
@@ -35,9 +32,14 @@ class EmployeeProfilesController < ApplicationController
     
       def update
         @emp_pro = EmployeeProfile.find(params[:id])
-    
         if @emp_pro.update(emp_params)
+          if @emp_pro.isrejected
+            @user=User.find_by(id: @emp_pro[:user_id])
+            @user.destroy
+            redirect_to root_path
+            else
           redirect_to root_path
+          end
         else
           render :edit, status: :unprocessable_entity
         end

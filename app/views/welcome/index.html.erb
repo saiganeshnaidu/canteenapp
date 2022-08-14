@@ -13,18 +13,27 @@
 
   <% if Current.user  %>
     <% if Current.user.usertype=="Admin" && Current.user.email=="ganesh@gmail.com"%>
-    <h4> users request </h4>
+    <h4> Employee request </h4>
     <%= link_to 'Accept/reject', employee_profiles_path %>
+    <h4> Chef request </h4>
+    <%= link_to 'Accept/reject', chefprofiles_path %>
     <% end %>
     <% end %>
 
 <% if Current.user %>
-<% if Current.user.usertype=="Employee" && Current.user.employee_profile.isapproved %>
+<% if Current.user.usertype=="Employee" && Current.user.employee_profile.isapproved%>
     <h4> You have already filled the details click below to continue </h4>
     <%= link_to "continue", Current.user.employee_profile %>
+<% elsif Current.user.usertype=="Chef" && Current.user.chef_profile.isapproved %>
+    <h4> You have already filled the details click below to continue </h4>
+    <%= link_to "continue", Current.user.chef_profile %> 
 <% end %>
-<% if Current.user.usertype=="Employee" && !Current.user.employee_profile.isapproved %>
+
+<% if Current.user.usertype=="Employee" && !Current.user.employee_profile.isapproved && !Current.user.employee_profile.isrejected %>
     <h4> You have already filled the details click below to continue </h4>
     <%= link_to "continue", employee_profiles_path %>
+<% elsif Current.user.usertype=="Chef" && !Current.user.chef_profile.isapproved && !Current.user.chef_profile.isrejected %>
+    <h4> You have already filled the details click below to continue </h4>
+    <%= link_to "continue", chefprofiles_path %>
 <% end %>
 <% end %>

@@ -4,9 +4,10 @@ class FooditemsController < ApplicationController
   end
     def create
       @foodstore = Foodstore.find(params[:foodstore_id])
-      @fooditem = Fooditem.create(item_params)
+      @fooditem = @foodstore.fooditems.create(item_params)
+
       if @fooditem.save
-      redirect_to foodstore_path(@foodstore)
+      redirect_to foodstores_path
     else
       render :new, status: :unprocessable_entity
     end

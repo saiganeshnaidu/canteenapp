@@ -1,15 +1,17 @@
-<h3> Edit the company name </h3>
+<h3> Approval </h3>
 
 
-<% form_with model: @emp_pro do |form| %>
+<%= form_with model: @chef_pro do |form| %>
     <div>
       <%= form.label :isapproved %><br>
       <%= form.number_field :isapproved %>
     </div>
+    <h5> 1 for approve </h5>
     <div>
         <%= form.label :isrejected %><br>
         <%= form.number_field :isrejected %>
       </div>
+      <h5> 1 for reject </h5>
     <div>
       <%= form.submit %>
     </div>

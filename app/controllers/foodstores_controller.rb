@@ -6,6 +6,7 @@ class FoodstoresController < ApplicationController
     redirect_to foodcategory_path(@foodcategory)
   end
   def show
+    @foodcategory = Foodcategory.find(params[:foodcategory_id])
     @foodstore=Foodstore.find(params[:id])
   end
   def destroy
