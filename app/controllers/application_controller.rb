@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
     def set_emp
       @cur_emp=EmployeeProfile.find_by(user_id: session[:user_id]) if Current.user && Current.user.usertype=="Employee"
     end
-
     def require_user_logged_in!
       # allows only logged in user
       redirect_to sign_in_path, alert: 'You must be signed in' if Current.user.nil?

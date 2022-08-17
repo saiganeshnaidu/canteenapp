@@ -1,0 +1,7 @@
+<h2> Cart show </h2>
+
+<% @foodstore.each do |x| %>
+    <%= link_to x.name, new_cart_path(:sid => x.id) %>
+
+    <br>
+<% end %>

@@ -1,9 +1,13 @@
-<h1>Foodcategories#index</h1>
-<p>Find me in app/views/foodcategories/index.html.erb</p>
+<h2>Foodcategories</h2>
 
 <% @foodcategories.each do |x| %>
     <%= link_to x.name, x %> <br><br>
 <% end %>
 
 <br> <br> <br>
-    <%= link_to "Add new foodcategory", new_foodcategory_path %>
+<% if Current.user  %>
+    <% if Current.user.usertype=="Admin" && Current.user.email=="ganesh@gmail.com"%>
+        <%= link_to "Add new foodcategory", new_foodcategory_path %>
+    <% end %>
+<% end %>
+

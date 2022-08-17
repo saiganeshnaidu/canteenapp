@@ -1,3 +1,9 @@
 
 <h4> Welcome to employee dashboard </h4> 
 <%= @emp_pro.name %>
+<br><br>
+
+
+<%= link_to "Create order", carts_path %> 
+
+<% button_to "Order food", new_cart_path, :method => :new, :form_class => "cart" %>

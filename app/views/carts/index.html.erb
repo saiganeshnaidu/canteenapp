@@ -1,0 +1,6 @@
+<h2> Available categories </h2>
+
+<% @foodcategories.each do |x| %>
+    <%= link_to x.name, cart_path(x) %>
+    <br>
+<% end %>

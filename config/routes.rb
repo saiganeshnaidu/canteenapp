@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
   resources :employee_profiles
   resources :chefprofiles
+  resources :carts
 
   resources :companies
   resources :registrations
