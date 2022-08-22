@@ -1,0 +1,16 @@
+
+<% @history.each do |x| %>
+    <% if x.user_id== Current.user.id %>
+    <h4> Created at </h4> <%= x.created_at %> <br>
+        <% x.cart_lists.each do |y| %>
+            <% @v=Fooditem.find(y.fooditem_id) %>
+            
+            <h4> Item name </h4> <%= @v.name %> 
+            <h4> price </h4> <%= @v.price %> <br>
+            
+
+
+        <% end %>
+
+    <% end %>
+<% end %>

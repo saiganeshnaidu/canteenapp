@@ -11,7 +11,7 @@ class EmployeeProfilesController < ApplicationController
       
   
         if @emp_pro.save
-                redirect_to employee_profiles_path
+                redirect_to @emp_pro
 
         else
           render :new, status: :unprocessable_entity
@@ -27,6 +27,8 @@ class EmployeeProfilesController < ApplicationController
         redirect_to root_path, status: :see_other
       end
       def edit
+        @emp_pros=EmployeeProfile.all
+
         @emp_pro = EmployeeProfile.find(params[:id])
       end
     
@@ -34,15 +36,16 @@ class EmployeeProfilesController < ApplicationController
         @emp_pro = EmployeeProfile.find(params[:id])
         if @emp_pro.update(emp_params)
           if @emp_pro.isrejected
-            @user=User.find_by(id: @emp_pro[:user_id])
-            @user.destroy
-            redirect_to root_path
+            redirect_to employee_profiles_path
             else
-          redirect_to root_path
+          redirect_to employee_profiles_path
           end
         else
           render :edit, status: :unprocessable_entity
         end
+      end
+      def order_history
+        @history=Cart.all
       end
     private
     def emp_params

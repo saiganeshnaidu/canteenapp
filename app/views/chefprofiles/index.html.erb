@@ -1,17 +1,4 @@
 
-    <% @chef_pro.each do |x| %>
-        <% if Current.user.id==x.user_id %>
-    <% if !(x.isapproved) && !(x.isrejected) %>
-    <p> Please wait the admin have to approve you</p>
-    <% elsif x.isrejected %>
-    <%= %>
-    <% else %>
-    <h4>Admin approved your profile </h4>
-    <%= link_to 'Click here to continue', x %>
-    <% end %>
-    <% end %>
-    <% end %>
-
     <% if Current.user.usertype=="Admin" && Current.user.email=="ganesh@gmail.com"%>
     <h4> below users are waiting for approval </h4>
     <% @chef_pro.each do |x| %>
@@ -22,3 +9,5 @@
         <% end %>
     
     <% end %>
+
+    <%= link_to 'Back', root_path %>

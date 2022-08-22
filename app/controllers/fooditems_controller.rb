@@ -7,7 +7,8 @@ class FooditemsController < ApplicationController
       @fooditem = @foodstore.fooditems.create(item_params)
 
       if @fooditem.save
-      redirect_to foodstores_path
+      redirect_to foodcategory_foodstores_path
+
     else
       render :new, status: :unprocessable_entity
     end

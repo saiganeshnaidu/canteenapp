@@ -18,10 +18,14 @@ Rails.application.routes.draw do
       resources :fooditems
     end
   end
+  get '/order_history', to: "employee_profiles#order_history"
+
   resources :employee_profiles
   resources :chefprofiles
   resources :carts
+  get 'cartmsg', to: "cart_lists#cartmsg"
 
+  resources :cart_lists
   resources :companies
   resources :registrations
 

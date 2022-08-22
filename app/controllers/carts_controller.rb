@@ -9,6 +9,7 @@ class CartsController < ApplicationController
         
     
         if @cart.save
+          redirect_to new_cart_list_path(:cid => @cart.id)
         else
           render :new, status: :unprocessable_entity
         end

@@ -8,7 +8,7 @@ class ChefprofilesController < ApplicationController
       
   
         if @chef_pro.save
-                redirect_to chefprofiles_path
+                redirect_to @chef_pro
         else
           render :new, status: :unprocessable_entity
         end    
@@ -24,11 +24,10 @@ class ChefprofilesController < ApplicationController
         @chef_pro = Chefprofile.find(params[:id])
         if @chef_pro.update(chef_params)
           if @chef_pro.isrejected
-            @user=User.find_by(id: @chef_pro[:user_id])
-            @user.destroy
-            redirect_to root_path
+            
+            redirect_to chefprofiles_path
             else
-          redirect_to root_path
+          redirect_to chefprofiles_path
           end
         else
           render :edit, status: :unprocessable_entity

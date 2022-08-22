@@ -1,18 +1,19 @@
-<h3> Approval </h3>
-
+<%= @chef_pro.name %>
 
 <%= form_with model: @chef_pro do |form| %>
     <div>
-      <%= form.label :isapproved %><br>
-      <%= form.number_field :isapproved %>
+    <h5> Mark here to approve </h5>
+
+      <%= form.check_box :isapproved %> <br />
+
     </div>
-    <h5> 1 for approve </h5>
     <div>
-        <%= form.label :isrejected %><br>
-        <%= form.number_field :isrejected %>
-      </div>
-      <h5> 1 for reject </h5>
+    <h5> Mark here to reject </h5>
+
+        <%= form.check_box :isrejected %> <br />
+        </div>
     <div>
       <%= form.submit %>
     </div>
   <% end %>
+

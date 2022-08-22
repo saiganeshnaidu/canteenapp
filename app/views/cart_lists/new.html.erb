@@ -1,0 +1,35 @@
+<h2> Add your cart list </h2>
+<%= @foodstore.name %>      <br>
+
+<% @foodstore.fooditems.each do |x| %>
+  <%= x.name %>
+
+<%= form_with model: @cartlist do |form| %>
+    <div>
+       <%= form.hidden_field :cart_id, value: @cartid.id %>
+      <br>
+    </div>
+    <div>
+    fooditem_id: <%= form.number_field :fooditem_id, value: x.id %>
+      <br>
+    </div>
+    <div>
+    quantity: <%= form.number_field :quantity, value: 0 %>
+    <br>
+  </div>
+  <div>
+  description: <%= form.text_field :description %>
+  <br>    <br>
+
+</div>
+    <div>
+      <%= form.submit "Add item to cart"%>
+    </div>
+  <% end %>
+  <% end %>
+
+  <br>
+  <br>
+
+  <%= link_to 'Finish order', cart_lists_path(:cid => @cartid.id) %>
+

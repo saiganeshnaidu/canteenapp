@@ -21,19 +21,10 @@
     <% end %>
 
 <% if Current.user %>
-<% if Current.user.usertype=="Employee" && Current.user.employee_profile.isapproved%>
-    <h4> You have already filled the details click below to continue </h4>
-    <%= link_to "continue", Current.user.employee_profile %>
-<% elsif Current.user.usertype=="Chef" && Current.user.chef_profile.isapproved %>
-    <h4> You have already filled the details click below to continue </h4>
-    <%= link_to "continue", Current.user.chef_profile %> 
-<% end %>
-
-<% if Current.user.usertype=="Employee" && !Current.user.employee_profile.isapproved && !Current.user.employee_profile.isrejected %>
-    <h4> You have already filled the details click below to continue </h4>
-    <%= link_to "continue", employee_profiles_path %>
-<% elsif Current.user.usertype=="Chef" && !Current.user.chef_profile.isapproved && !Current.user.chef_profile.isrejected %>
-    <h4> You have already filled the details click below to continue </h4>
-    <%= link_to "continue", chefprofiles_path %>
-<% end %>
+    <% if Current.user.usertype=="Employee" %>
+        <%= link_to 'Continue to dashboard', @emp_pro %>
+    <% end %> 
+    <% if Current.user.usertype=="Chef" %>
+        <%= link_to 'Continue to dashboard', @chef_pro %>
+    <% end %> 
 <% end %>

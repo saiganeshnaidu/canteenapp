@@ -1,6 +1,14 @@
-<h2> Available categories </h2>
+<%if Current.user.employee_profile.isapproved && !Current.user.employee_profile.isrejected %>
+    <h2> Available categories </h2>
 
-<% @foodcategories.each do |x| %>
-    <%= link_to x.name, cart_path(x) %>
-    <br>
+    <% @foodcategories.each do |x| %>
+        <%= link_to x.name, cart_path(x) %>
+        <br>
+    <% end %>
+    <% elsif Current.user.employee_profile.isrejected %>
+    <h5> Admin rejected your profile so you are unable to place order </h4>
+
+    <% else %>
+    <h5> You need admin approval for ordering food </h4>
+
 <% end %>
