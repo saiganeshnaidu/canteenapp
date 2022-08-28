@@ -36,6 +36,11 @@ class ChefprofilesController < ApplicationController
       def show
         @chef_pro=Chefprofile.find(params[:id])
     end
+    def order
+      @chef_pro = Chefprofile.find_by(params[:id])
+
+      @carts=Cart.all
+    end
     private
     def chef_params
       params.require(:chefprofile).permit(:name, :phone, :user_id, :foodstore_id, :isapproved, :isrejected)

@@ -1,7 +1,26 @@
+<h4> Current order </h4>
+<table>
+<tr>
+<th>Item name  </th>
+<th>quantity  </th>
+<th>price  </th>
+<th>Total item cost</th>
+<th>Total Bill</th>
+
+</tr>
 <% @cartid.cart_lists.each do |x| %>
-    <%= x.fooditem.name %>
-    <%= x.quantity %>
-    <%= x.fooditem.price %>
+    <tr> <td><%= x.fooditem.name %> </td>
+    <td> <%= x.quantity %> </td>
+    <td> <%= x.fooditem.price %> </td>
+    <td> <%= x.quantity * x.fooditem.price %> </td>
+   <% @total+=x.quantity * x.fooditem.price %>
 
     <% end %>
    
+<td> <%= @total  %> </td>
+
+</tr>
+
+
+</table>
+

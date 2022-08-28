@@ -16,6 +16,7 @@ class CartListsController < ApplicationController
       end
       def index
         @cartid=Cart.find(params[:cid])
+        @total=0
 
       end
       

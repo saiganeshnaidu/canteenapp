@@ -5,4 +5,6 @@ class CartList < ApplicationRecord
   validates :fooditem_id, presence: true
   validates :quantity, presence: true, numericality: { in: 1..5 }
 
+  
+
 end

@@ -1,0 +1,30 @@
+<h2> Order details </h2>
+<table>
+<tr>
+  <th>Itemname </th>
+  <th>quantity </th>
+  <th>price </th>
+</tr>
+
+<% @cart.cart_lists.each do |x| %>
+  <tr>
+    <td> <%= x.fooditem.name %> </td>
+    <td> <%= x.quantity %> </td>
+    <td> <%= x.fooditem.price %> </td>
+  </tr>
+<% end %>
+</table>
+<%= form_with model: @cart do |form| %>
+    <div>
+   <h4>Order status </h4>
+    <%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: @cart.order_status%>
+      
+    </div><br><br>
+
+   
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+<br><br>
+  <%= link_to 'Go to all orders', order_path %>

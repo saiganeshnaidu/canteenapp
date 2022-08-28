@@ -3,7 +3,24 @@
 <h4> below users are waiting for approval </h4>
 <% @emp_pro.each do |x| %>
     <% if !(x.isapproved) && !(x.isrejected) %>
-    <%=link_to x.name, edit_employee_profile_path(x) %>
+    Name: <%= x.name %>
+    <%= form_with model: x do |form| %>
+        <div>
+        <h5> Mark here to approve </h5>
+    
+          <%= form.check_box :isapproved %>
+    
+        </div>
+        <div>
+        <h5> Mark here to reject </h5>
+    
+            <%= form.check_box :isrejected %>
+            </div>
+        <div>
+          <%= form.submit %>
+        </div>
+      <% end %>
+    
     <br> <br>
     <% end %>
     <% end %>

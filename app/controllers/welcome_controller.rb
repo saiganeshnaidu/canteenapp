@@ -5,8 +5,6 @@ class WelcomeController < ApplicationController
         @emp_pro=EmployeeProfile.find_by(user_id: Current.user.id)
       elsif Current.user.usertype=="Chef"
       @chef_pro=Chefprofile.find_by(user_id: Current.user.id)
-
-
       end
     end
   end

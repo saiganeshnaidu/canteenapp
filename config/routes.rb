@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
   get '/order_history', to: "employee_profiles#order_history"
+  get '/order', to: "chefprofiles#order"
+
 
   resources :employee_profiles
   resources :chefprofiles
