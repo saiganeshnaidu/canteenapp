@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
   root 'welcome#index'
 
   get 'sign_up', to: 'registrations#new'
@@ -21,7 +22,9 @@ Rails.application.routes.draw do
   get '/order_history', to: "employee_profiles#order_history"
   get '/order', to: "chefprofiles#order"
 
-
+  resources :rooms do
+    resources :messages
+  end
   resources :employee_profiles
   resources :chefprofiles
   resources :carts

@@ -5,5 +5,7 @@ class Cart < ApplicationRecord
   validates :user_id, presence: true
   validates :foodstore_id, presence: true
 
+  has_one  :room
+
 
 end

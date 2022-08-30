@@ -1,16 +1,22 @@
 
+
+
 <% @history.each do |x| %>
     <% if x.user_id== Current.user.id %>
-    <h4> Created at </h4> <%= x.created_at %> <br>
+     <h4> Created on  <%= x.created_at %> </h4> 
         <% x.cart_lists.each do |y| %>
             <% @v=Fooditem.find(y.fooditem_id) %>
             
-            <h4> Item name </h4> <%= @v.name %> 
-            <h4> price </h4> <%= @v.price %> <br>
+             <%= @v.name %> 
+             <%= @v.price %> 
+             <%= y.quantity %> <br>
+
             
 
 
         <% end %>
+        <strong> Order status </strong> <%= x.order_status %> 
+        <%= link_to 'chat with chef', x.room %>
 
     <% end %>
 <% end %>

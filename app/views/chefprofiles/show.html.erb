@@ -1,6 +1,18 @@
 
-<h4> Welcome to employee dashboard </h4> 
+<h4> Welcome to chef dashboard </h4> 
 <%= @chef_pro.name %>
 
 <br> <br>
-<%= link_to 'Received orders', order_path %>
+<%if @chef_pro.isapproved && !@chef_pro.isrejected %>
+<%= link_to 'Received orders', order_path %><br>
+<%= link_to "Add food items", [@fstore.foodcategory, @fstore] %>
+
+    <% elsif @chef_pro.isrejected %>
+    <h5> Admin rejected your profile so you are unable to process orders </h4>
+
+    <% else %>
+    <h5> You need admin approval for processing orders </h4>
+
+<% end %>
+
+

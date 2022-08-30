@@ -24,3 +24,14 @@
 
 </table>
 
+
+<%= form_with model: @room do |form| %>
+    <div>
+      <%= form.hidden_field :cart_id, value: @cartid.id %>
+    </div>
+    <div>
+      <%= form.submit 'Chat with chef' %>
+    </div>
+  <% end %>
+   
+

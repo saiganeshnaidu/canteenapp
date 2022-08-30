@@ -35,10 +35,11 @@ class ChefprofilesController < ApplicationController
       end
       def show
         @chef_pro=Chefprofile.find(params[:id])
+        @fstore=Foodstore.find(@chef_pro.foodstore_id)
+        @fcat=Foodcategory.find(@fstore.foodcategory_id)
     end
     def order
       @chef_pro = Chefprofile.find_by(params[:id])
-
       @carts=Cart.all
     end
     private

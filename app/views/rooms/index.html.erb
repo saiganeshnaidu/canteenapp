@@ -1,0 +1,18 @@
+<%= turbo_stream_from @room %>
+<div id="messages">
+</div>
+
+<% @room.messages.each do |x| %>
+    <div> <%= x.context %> </div>
+<% end %>
+<%= form_with model: [@room ,@message] do |f| %>
+    <%= f.hidden_field :room_id, value: @room.id  %>
+    <%= f.text_field :context %>
+
+    <%= f.submit  %>
+  <% end %>
+
+
+  
+
+   

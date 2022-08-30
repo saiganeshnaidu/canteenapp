@@ -5,6 +5,7 @@
         <%=x.user.employee_profile.name %> Ordered on
         <%= x.created_at %> in
         <%=x.foodstore.name %> restaurant
-        <%= link_to "Open order", edit_cart_path(x) %><br> <br>
+        <%= link_to "Open order", edit_cart_path(x) %>
+        <%= link_to "Messages", x.room %> <br> <br>
     <% end %>
 <% end %>

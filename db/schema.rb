@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_18_045418) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_28_123211) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,6 +91,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_18_045418) do
     t.index ["foodcategory_id"], name: "index_foodstores_on_foodcategory_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "room_id", null: false
+    t.text "context"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_rooms_on_cart_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -109,4 +124,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_18_045418) do
   add_foreign_key "employee_profiles", "users"
   add_foreign_key "fooditems", "foodstores"
   add_foreign_key "foodstores", "foodcategories"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "rooms", "carts"
 end
