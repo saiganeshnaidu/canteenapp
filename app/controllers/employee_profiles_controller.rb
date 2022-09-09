@@ -46,6 +46,11 @@ class EmployeeProfilesController < ApplicationController
       end
       def order_history
         @history=Cart.all
+        @room=Room.new
+
+      end
+      def noticee
+
       end
     private
     def emp_params

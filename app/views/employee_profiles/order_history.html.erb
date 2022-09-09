@@ -16,7 +16,18 @@
 
         <% end %>
         <strong> Order status </strong> <%= x.order_status %> 
+        <% if  x.room %>
         <%= link_to 'chat with chef', x.room %>
+        <% else %>
+        <%= form_with model: @room do |form| %>
+            <div>
+              <%= form.hidden_field :cart_id, value: x.id %>
+            </div>
+            <div>
+              <%= form.submit 'Start messaging with chef' %>
+            </div>
+          <% end %>
+        <% end %>
 
     <% end %>
 <% end %>

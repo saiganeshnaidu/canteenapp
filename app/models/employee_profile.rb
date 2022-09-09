@@ -6,4 +6,6 @@ class EmployeeProfile < ApplicationRecord
   validates :user_id, presence: true, uniqueness: true
   validates :company_id, presence: true
 
+  has_many :notifications, as: :recipient, dependent: :destroy
+
 end

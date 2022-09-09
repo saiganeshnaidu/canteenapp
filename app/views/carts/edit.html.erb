@@ -14,17 +14,15 @@
   </tr>
 <% end %>
 </table>
-<%= form_with model: @cart do |form| %>
-    <div>
-   <h4>Order status </h4>
-    <%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: @cart.order_status%>
-      
-    </div><br><br>
 
-   
-    <div>
-      <%= form.submit %>
-    </div>
-  <% end %>
+<%= form_with model: @cart do |form| %>
+  Order status:<%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: @cart.order_status%>
+    
+
+ 
+    <%= form.submit %>
+    <br><br>
+
+<% end %>
 <br><br>
-  <%= link_to 'Go to all orders', order_path %>
+

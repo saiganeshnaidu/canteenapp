@@ -20,6 +20,7 @@ class CartsController < ApplicationController
    end
    def index
     @foodcategories=Foodcategory.all
+    @carts=Cart.all
    end
    def edit
     @cart=Cart.find(params[:id])
@@ -28,7 +29,6 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
 
     if @cart.update(cart_params)
-      redirect_to edit_cart_path(@cart)
     else
       render :edit, status: :unprocessable_entity
     end

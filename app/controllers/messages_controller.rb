@@ -6,10 +6,8 @@ class MessagesController < ApplicationController
         @message = Message.new(message_params)
         
     
-        if @message.save
-        else
-          render :new, status: :unprocessable_entity
-        end
+         @message.save
+          
       end
       def index
         
@@ -24,6 +22,10 @@ class MessagesController < ApplicationController
 
 
       end
+      def destroy
+        @message = Message.find(params[:id])
+        @message.destroy
+        end
       private
       def message_params
         params.require(:message).permit(:room_id, :context)

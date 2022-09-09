@@ -1,4 +1,18 @@
-<%= @chef_pro.name %>
+<% @chef_pro.pictures.each do |x| %>
+    <%= link_to image_tag(x, style:"width:300px; height:300px"), x %>
+<% end %>
 
+<%= form_with model: @chef_pro do |form| %>
+   
+    <div>
+      <%= form.label :pictures %><br>
+      <%= form.file_field :pictures, multiple: true %>
+    </div>
+  <br>  <br>
 
+    <div>
+      <%= form.submit "Upload" %>
+    </div>
+  <% end %>
 
+  <%= link_to "Go to dashboard", @chef_pro %>

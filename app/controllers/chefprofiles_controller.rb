@@ -23,11 +23,10 @@ class ChefprofilesController < ApplicationController
       def update
         @chef_pro = Chefprofile.find(params[:id])
         if @chef_pro.update(chef_params)
-          if @chef_pro.isrejected
-            
+          if Current.user && Current.user.usertype=="Admin"
             redirect_to chefprofiles_path
-            else
-          redirect_to chefprofiles_path
+          else
+            redirect_to edit_chefprofile_path(@chef_pro)
           end
         else
           render :edit, status: :unprocessable_entity
@@ -39,11 +38,15 @@ class ChefprofilesController < ApplicationController
         @fcat=Foodcategory.find(@fstore.foodcategory_id)
     end
     def order
-      @chef_pro = Chefprofile.find_by(params[:id])
-      @carts=Cart.all
+      @chef_pro = Chefprofile.find(params[:chefid])
+
+      @carts=Cart.all.order("created_at DESC")
+    end
+    def notice
+
     end
     private
     def chef_params
-      params.require(:chefprofile).permit(:name, :phone, :user_id, :foodstore_id, :isapproved, :isrejected)
+      params.require(:chefprofile).permit(:name, :phone, :user_id, :foodstore_id, :isapproved, :isrejected, pictures: [])
     end
 end

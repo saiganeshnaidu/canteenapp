@@ -1,11 +1,3 @@
 <h2>New foodcategories page</h2>
 
-<%= form_with model: @foodcategories do |form| %>
-    <div>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
-    </div>
-    <div>
-      <%= form.submit %>
-    </div>
-  <% end %>
+<%= render 'form' %>

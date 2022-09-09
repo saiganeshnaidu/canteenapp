@@ -25,13 +25,16 @@
 </table>
 
 
-<%= form_with model: @room do |form| %>
-    <div>
-      <%= form.hidden_field :cart_id, value: @cartid.id %>
-    </div>
-    <div>
-      <%= form.submit 'Chat with chef' %>
-    </div>
-  <% end %>
-   
+<strong> order status: </strong> <%= @cartid.order_status %> <br><br>
 
+
+  <%= link_to "Goto dashboard", Current.user.employee_profile %>
+  <% if !@cartid.room %>
+  <%= form_with model: @room do |form| %>
+      <%= form.hidden_field :cart_id, value: @cartid.id %> <br><br>
+      <%= form.submit 'Start messaging chef' %>
+  <% end %>
+  <% else %>
+  <%= link_to 'chat with chef', x.room %>
+
+  <% end %>

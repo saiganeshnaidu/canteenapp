@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   end
   get '/order_history', to: "employee_profiles#order_history"
   get '/order', to: "chefprofiles#order"
+  get '/notice', to: "chefprofiles#notice"
+  get '/noticee', to: "employee_profiles#noticee"
+  get '/admin_notice', to: "welcome#admin_notice"
+
+
+
 
   resources :rooms do
     resources :messages

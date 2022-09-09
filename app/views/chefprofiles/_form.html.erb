@@ -1,0 +1,27 @@
+<%= form_with model: @chef_pro do |form| %>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.label :phone %><br>
+      <%= form.text_field :phone %>
+    </div>
+    <div>
+      <%= form.hidden_field :user_id, value: Current.user.id %>
+
+    </div>
+    <div>
+    <%= form.label :foodstore_id %><br>
+    <%= form.number_field :foodstore_id%>
+ <% collection_select(:emp_pro, :company_id, Company.all, :id, :name, prompt: true) %> 
+
+    </div>
+
+   
+  <br>  <br>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>

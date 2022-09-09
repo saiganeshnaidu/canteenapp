@@ -46,7 +46,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+ gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -65,5 +65,5 @@ group :development do
 
   gem 'bcrypt', '~> 3.1', '>= 3.1.18'
   gem 'pry', '~> 0.14.1'
+  gem "noticed", "~> 1.5"
 end
-

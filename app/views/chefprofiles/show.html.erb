@@ -4,9 +4,9 @@
 
 <br> <br>
 <%if @chef_pro.isapproved && !@chef_pro.isrejected %>
-<%= link_to 'Received orders', order_path %><br>
-<%= link_to "Add food items", [@fstore.foodcategory, @fstore] %>
-
+<%= link_to 'Received orders', order_path(:chefid=> @chef_pro.id) %><br>
+<%= link_to "Add food items", [@fstore.foodcategory, @fstore] %> <br>
+<%= link_to "Notificatios", notice_path %> 
     <% elsif @chef_pro.isrejected %>
     <h5> Admin rejected your profile so you are unable to process orders </h4>
 
@@ -16,3 +16,4 @@
 <% end %>
 
 
+<%= link_to "gallery", edit_chefprofile_path %>

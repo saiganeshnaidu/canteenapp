@@ -1,3 +1,4 @@
+<% if Current.user && Current.user.usertype=="Employee" %>
 <%if Current.user.employee_profile.isapproved && !Current.user.employee_profile.isrejected %>
     <h2> Available categories </h2>
 
@@ -11,4 +12,19 @@
     <% else %>
     <h5> You need admin approval for ordering food </h4>
 
+<% end %>
+<% end %>
+
+<% if Current.user && Current.user.usertype=="Admin" %>
+        <% @carts.each do |x| %>
+            <%=x.user.employee_profile.name %> Ordered on
+            <%= x.created_at %> in
+            <%=x.foodstore.name %> restaurant
+         <%= form_with model: x do |form| %>
+            Order status:<%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: x.order_status%>
+              <%= form.submit %>
+              <br><br>
+
+          <% end %>
+        <% end %>
 <% end %>

@@ -1,12 +1,4 @@
 <h2> Thisis companies newpage </h2>
 
-<%= form_with model: @companies do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render 'form' %>
  
