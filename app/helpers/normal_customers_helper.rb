@@ -1,0 +1,2 @@
+module NormalCustomersHelper
+end

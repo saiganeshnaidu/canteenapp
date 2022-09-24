@@ -1,30 +1,38 @@
-<h2> Food categories show page </h2>
 
-<p> <%=@foodcategories.name %> </p>
-
- <%= link_to "Edit", edit_foodcategory_path %> <br><br>
-
-<%= button_to "Destroy", @foodcategories, method: :delete %>
+<h2 class="text-center"> <%=@foodcategories.name %> </h2>
 
 
-<h2>foodstores</h2>
+<%= button_to "Delete foodcategory", @foodcategories, method: :delete %> <br><br>
+
+<% if @foodcategories.foodstores.present? %>
+<h3 class="text-center" >Available foodstores on above category</h3>
 <% @foodcategories.foodstores.each do |f| %>
   <p>
-    <strong>name:</strong>
     <%= link_to f.name, [f.foodcategory, f] %>
     <%= button_to "Delete foodstore", [f.foodcategory, f], method: :delete %>
-    <br><br><br>
+    <br>
   </p>
+<% end %>
 <% end %>
 
 
-<h2>Add a foodstore:</h2>
-<%= form_with model: [ @foodcategories, @foodcategories.foodstores.build ] do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+
+<h3 class="text-center" >Add a foodstore</h3>
+
+
+<%= form_with model: [ @foodcategories, @foodcategories.foodstores.build ] do |f| %>
+    <div class="card-body">
+  
+      <div class="mb-3">
+        <%= f.label :name, { class: "form-label"} %>
+        <%= f.text_field :name, { class: "form-control", placeholder: "Food store Name" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :Image, { class: "form-label"} %><br>
+        <%= f.file_field :image %>
+      </div>
+  
+      <%= f.submit "Add foodstore", class: "btn btn-primary" %>
+  
+    </div>
+  <% end %>

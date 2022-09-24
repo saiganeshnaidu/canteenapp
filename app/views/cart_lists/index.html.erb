@@ -1,40 +1,37 @@
-<h4> Current order </h4>
-<table>
-<tr>
-<th>Item name  </th>
-<th>quantity  </th>
-<th>price  </th>
-<th>Total item cost</th>
-<th>Total Bill</th>
+<h2 class="text-center" > Order details </h2>
+<h4> <%= @cartid.foodstore.name %> </h4>
 
-</tr>
-<% @cartid.cart_lists.each do |x| %>
-    <tr> <td><%= x.fooditem.name %> </td>
-    <td> <%= x.quantity %> </td>
-    <td> <%= x.fooditem.price %> </td>
-    <td> <%= x.quantity * x.fooditem.price %> </td>
-   <% @total+=x.quantity * x.fooditem.price %>
-
-    <% end %>
-   
-<td> <%= @total  %> </td>
-
-</tr>
-
-
+<table class="table" >
+  <thread><th> Item Name </th>
+  <th>  Quantity </th>
+  <th>  Price </th>
+  </thread>
+  <tbody>
+  <% @cartid.cart_lists.each do |x| %>
+    <tr> <td> <%= x.fooditem.name %> </td>
+    <td> <%= x.quantity %>  </td>
+    <td> <%= x.quantity * x.fooditem.price %> </td>    
+    </tr>
+    <% @total+=x.quantity * x.fooditem.price %>
+    </tbody>
+  <% end %>
 </table>
+    
+<div class="order-details"> <strong>Grand total:  <%= @total  %> </strong>
+  <strong> order status: <%= @cartid.order_status %>  </strong> 
+</div> <br><br>
+<div>
+<% if employee? %>
+  <%= link_to "<-Goto dashboard", Current.user.employee_profile, class:"btn btn-primary" %>
+<% else %>
+  <%= link_to "Goto dashboard", Current.user.normal_customer, class:"btn btn-primary" %>
+<% end %> <br><br>
 
-
-<strong> order status: </strong> <%= @cartid.order_status %> <br><br>
-
-
-  <%= link_to "Goto dashboard", Current.user.employee_profile %>
-  <% if !@cartid.room %>
+<% if !(@cartid.room) %>
   <%= form_with model: @room do |form| %>
-      <%= form.hidden_field :cart_id, value: @cartid.id %> <br><br>
-      <%= form.submit 'Start messaging chef' %>
+    <%= form.hidden_field :cart_id, value: @cartid.id %> <br><br>
+    <%= form.submit 'Start messaging chef' %>
   <% end %>
-  <% else %>
-  <%= link_to 'chat with chef', x.room %>
-
-  <% end %>
+<% else %>
+  <%= link_to 'chat with chef', @cartid.room, class:"btn btn-primary" %>
+<% end %>

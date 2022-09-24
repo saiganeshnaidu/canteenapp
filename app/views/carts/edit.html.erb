@@ -1,28 +1,32 @@
-<h2> Order details </h2>
-<table>
-<tr>
-  <th>Itemname </th>
-  <th>quantity </th>
-  <th>price </th>
-</tr>
+<h2 class="text-center" > Order details </h2>
+<h4> <%= @cart.foodstore.name %> </h4>
+<table class="table" >
+  <thread><th> Item Name </th>
+  <th>  Quantity </th>
+  <th>  Price </th>
+  </thread>
+  <tbody>
+  <% @cart.cart_lists.each do |x| %>
+    <tr> <td> <%= x.fooditem.name %> </td>
+    <td> <%= x.quantity %>  </td>
+    <td><%= x.quantity * x.fooditem.price %> </td>    
+    </tr>
+    <% @total+=x.quantity * x.fooditem.price %>
+    </tbody>
 
-<% @cart.cart_lists.each do |x| %>
-  <tr>
-    <td> <%= x.fooditem.name %> </td>
-    <td> <%= x.quantity %> </td>
-    <td> <%= x.fooditem.price %> </td>
-  </tr>
-<% end %>
+  <% end %>
+
 </table>
-
-<%= form_with model: @cart do |form| %>
-  Order status:<%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: @cart.order_status%>
     
+<div class="order-details">
+  <strong>Grand total:  <%= @total  %> </strong>
+  <strong> order status: <%= @cart.order_status %>  </strong> 
+</div> <br><br>
 
- 
-    <%= form.submit %>
-    <br><br>
-
+<% if admin? %>
+  <%= link_to "Back", carts_path %>
+<% elsif chef? %>
+  <%= link_to "Back", order_path(Current.user.chef_profile) %>
 <% end %>
-<br><br>
+
 

@@ -1,33 +1,28 @@
 
 
 
-<% @history.each do |x| %>
-    <% if x.user_id== Current.user.id %>
-     <h4> Created on  <%= x.created_at %> </h4> 
+<% @history.reverse.each do |x| %>
+
+  <% @total=0 %>
+    <div class="card history-card">
+    <div class="card-body">
+    <div class="order-details">
+    <h2> <%= x.foodstore.name %> </h2>
+    <h5> <%= x.order_status %>  </h4>
+     </div>
+
+       Ordered on:<%= x.created_at %>
+
+      <%= link_to "View menu", cart_lists_path(:cid=> x.id) %>
+
         <% x.cart_lists.each do |y| %>
             <% @v=Fooditem.find(y.fooditem_id) %>
             
-             <%= @v.name %> 
-             <%= @v.price %> 
-             <%= y.quantity %> <br>
+             <% @total+= @v.price* y.quantity %> 
+        <% end %> <br>
+        <strong> Total amount: </strong> <%= @total %> <br>
+        
+        </div>
+        </div>
 
-            
-
-
-        <% end %>
-        <strong> Order status </strong> <%= x.order_status %> 
-        <% if  x.room %>
-        <%= link_to 'chat with chef', x.room %>
-        <% else %>
-        <%= form_with model: @room do |form| %>
-            <div>
-              <%= form.hidden_field :cart_id, value: x.id %>
-            </div>
-            <div>
-              <%= form.submit 'Start messaging with chef' %>
-            </div>
-          <% end %>
-        <% end %>
-
-    <% end %>
 <% end %>

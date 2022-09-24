@@ -1,30 +1,41 @@
-<% if Current.user && Current.user.usertype=="Employee" %>
-<%if Current.user.employee_profile.isapproved && !Current.user.employee_profile.isrejected %>
-    <h2> Available categories </h2>
-
+<% if validate_customer? || validate_employee?  %>
+  <h2 class="text-center">Food Categories </h2>
+    <div class="full-store">
     <% @foodcategories.each do |x| %>
-        <%= link_to x.name, cart_path(x) %>
-        <br>
+      <div class="card store border-0" style="width: 15rem;">
+        <%= image_tag(x.category_image, style:"width:13rem; height:220px; border-radius:100%;") if x.category_image %>
+        <div class="card-body">
+          <h5><%= link_to x.name, cart_path(x), style:"text-decoration:none;"%> </h5>
+        </div>
+      </div>
     <% end %>
-    <% elsif Current.user.employee_profile.isrejected %>
-    <h5> Admin rejected your profile so you are unable to place order </h4>
-
-    <% else %>
-    <h5> You need admin approval for ordering food </h4>
-
-<% end %>
+  </div>
+<% elsif employee? || customer? %>
+  <h5> You need admin approval for ordering food </h4>
 <% end %>
 
-<% if Current.user && Current.user.usertype=="Admin" %>
-        <% @carts.each do |x| %>
-            <%=x.user.employee_profile.name %> Ordered on
-            <%= x.created_at %> in
-            <%=x.foodstore.name %> restaurant
-         <%= form_with model: x do |form| %>
-            Order status:<%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: x.order_status%>
-              <%= form.submit %>
-              <br><br>
 
-          <% end %>
-        <% end %>
+
+
+
+
+
+<% if admin? %>
+  <h2 class="text-center" > All orders </h2>
+  <% @carts.reverse.each do |x| %>
+    <div class="order-list">
+    <div>
+    <%=x.user.email %> Ordered on
+        <%= x.created_at %> in
+        <%=x.foodstore.name %> restaurant
+        <%= link_to "Open order", edit_cart_path(x) %> 
+        </div>
+        <div>
+        <%= form_with model: x do |form| %>
+            <%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: x.order_status%> 
+              <%= form.submit "change status" %>
+          </div>
+          </div>
+    <% end %>
+<% end %>
 <% end %>

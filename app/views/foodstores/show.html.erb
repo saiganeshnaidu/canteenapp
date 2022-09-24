@@ -1,45 +1,55 @@
-<h1> foodstore show </h1>
-
-<%= @foodstore.name %>
-
-<h2> Food items list </h2>
+<h3 class="text-center" style="color:Pink;"><%= @foodstore.name %> </h3>
+<% if @foodstore.fooditems.present? %>
+<table class="table table-striped">
+<thread>
+<th>Item name </th>
+<th>Item price </th>
+<th>Description </th>
+</thread>
 <% @foodstore.fooditems.each do |f| %>
-    <p>
-      <strong>name:</strong>
-      <%=  f.name %>
-    </p>
-    <p>
-      <strong>price:</strong>
-      <%=  f.price %>
-    </p>
-    <p>
-    <strong>description:</strong>
-    <%=  f.description %>
-    <br><br><br>
-  </p>
-  <% end %>
+  <tbody>
 
-  <h2>Create new fooditem </h2>
-  <%= form_with model:[@foodcategory,@foodstore, @foodstore.fooditems.build] do |form| %>
-    <div>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
-    </div>
-    <div>
-      <%= form.label :price %><br>
-      <%= form.number_field :price %>
-    </div>
-    <div>
-      <%= form.label :description %><br>
-      <%= form.text_field :description %>
-    </div>
+<tr>
+<td>      <%=  f.name %></td>
+<td>       <%=  f.price %></td>
+<td>  <%=  f.description %></td>
+
+</tr>
+</tbody>
+
+<% end %>
+
+</table>
+<% end %>
+    
+
+
+  <h2 class="text-center" >Create new fooditem </h2>
+
+  <%= form_with model:[@foodcategory,@foodstore, @foodstore.fooditems.build] do |f| %>
+    <div class="card-body">
   
-    <div>
-      <%= form.hidden_field :foodstore_id, value: @foodstore.id %>
-    </div>
-  <br>  <br>
-
-    <div>
-      <%= form.submit %>
+      <div class="mb-3">
+        <%= f.label :name, { class: "form-label"} %>
+        <%= f.text_field :name, { class: "form-control", placeholder: "Food item Name" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :price, { class: "form-label"} %>
+        <%= f.number_field :price, { class: "form-control", placeholder: "Item price" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :description, { class: "form-label"} %>
+        <%= f.text_field :description, { class: "form-control", placeholder: "Item description" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :Image, { class: "form-label"} %><br>
+        <%= f.file_field :item_image %>
+      </div>
+      <div class="mb-3">
+      <%= f.hidden_field :foodstore_id, value: @foodstore.id %>
+      </div>
+  
+      <%= f.submit "Add fooditem", class: "btn btn-primary" %>
+  
     </div>
   <% end %>

@@ -1,0 +1,72 @@
+@import "bootstrap";
+
+.navbar-expand-lg .navbar-nav {
+    width: 100%;
+      justify-content: flex-end; 
+  }
+  
+  .header-space{
+    margin-right: 1.5rem;
+  }
+  
+  .dropdown-menu{
+    min-width: 6rem;
+  }
+  
+  .dropdown{
+    margin-right: 4rem;
+  }
+  .full-store{
+    display: flex;
+    gap: 20px;
+  }
+.store{
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.border{
+  min-height: 350px;
+}
+.order-details{
+  display: flex;
+  justify-content: space-between;
+}
+.categories{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.bg-image{
+  width: 100%;
+  background-size: contain;
+  height: 100vh;  
+  background-repeat: no-repeat;
+}
+.msg-content{
+   width: 85%;
+   margin: 10px;
+}
+.message-box {
+  width: fit-content;
+  max-width: 40%;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #555555 ;
+  padding: 10px
+}
+
+.order-list{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  border-bottom: 3px solid black;
+}
+.food-item{
+  gap: 20px;
+  margin: 5px 2px 10px 5px;
+}

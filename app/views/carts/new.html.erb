@@ -1,17 +1,14 @@
 
-<h4> Restaurant name </h4>
-<%= @foodstore.name %>
+<h2> Start your order on <%= @foodstore.name %> </h2>
 
 <%= form_with model: @cart do |form| %>
-    <div>
-      <%= form.hidden_field :user_id, value: Current.user.id %>
-      <br>
-    </div>
-    <div>
-      <%= form.hidden_field :foodstore_id, value: @foodstore.id %>
-      <br>
-    </div>
-    <div>
-      <%= form.submit "Click to cart"%>
-    </div>
-  <% end %>
+  <div>
+    <%= form.hidden_field :user_id, value: Current.user.id %><br>
+  </div>
+  <div>
+    <%= form.hidden_field :foodstore_id, value: @foodstore.id %><br>
+  </div>
+  <div>
+    <%= form.submit "Click to order"%>
+  </div>
+<% end %>

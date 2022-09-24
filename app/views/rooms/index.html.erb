@@ -7,13 +7,15 @@
 
 <%= form_with model: [@room ,@message], remote: true do |f| %>
     <%= f.hidden_field :room_id, value: @room.id  %>
-    <%= f.text_field :context %>
+    <%= f.hidden_field :user_id, value: Current.user.id  %>
+    <%= f.text_field :context, class: "msg-content" %>
+    <%= f.submit "send message", class: "btn btn-primary"  %>
+  <% end %> <br>
 
-    <%= f.submit "send message"  %>
-  <% end %>
-
-<% if Current.user.usertype=="Employee" %>
-  <%= link_to "Go back", order_history_path %>
+<% if employee? %>
+  <%= link_to "Go Back", order_history_path %>
+  <% elsif customer? %>
+  <%= link_to "Go Back", order_history_path %>
 <% else %>
-<%= link_to "Go back", order_path(:chefid=> Current.user.chef_profile) %>
+<%= link_to "Go Back", order_path(:chefid=> Current.user.chef_profile) %>
 <% end %>

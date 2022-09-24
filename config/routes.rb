@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   post 'password/reset', to: 'password_resets#create'
   get 'password/reset/edit', to: 'password_resets#edit'
   patch 'password/reset/edit', to: 'password_resets#update'
-  
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
+  get '/auth/facebook/callback', to: 'sessions#omniauth'
+
+
   resources :foodcategories do
     resources :foodstores do
       resources :fooditems
@@ -22,23 +25,34 @@ Rails.application.routes.draw do
   get '/order_history', to: "employee_profiles#order_history"
   get '/order', to: "chefprofiles#order"
   get '/notice', to: "chefprofiles#notice"
+  get 'chef_detail', to: 'chefprofiles#new'
+  post 'chef_detail', to: 'chefprofiles#create'
+  get 'employee_detail', to: 'employee_profiles#new'
+  post 'employee_detail', to: 'employee_profiles#create'
+  get 'customer_detail', to: 'normal_customers#new'
+  post 'customer_detail', to: 'normal_customers#create'
   get '/noticee', to: "employee_profiles#noticee"
   get '/admin_notice', to: "welcome#admin_notice"
+  get '/admin_dashboard', to: "welcome#admin_dashboard"
 
+  get '/approvals', to: "welcome#approval"
 
+  get '/customer_notice', to: "normal_customers#customer_notice"
 
 
   resources :rooms do
     resources :messages
   end
-  resources :employee_profiles
-  resources :chefprofiles
+  resources :employee_profiles, only: [:index, :show, :edit, :update]
+  resources :chefprofiles, only: [:index, :show, :edit, :update]
+  resources :normal_customers, only: [:index, :show, :edit, :update]
   resources :carts
   get 'cartmsg', to: "cart_lists#cartmsg"
 
   resources :cart_lists
   resources :companies
-  resources :registrations
+  resources :registrations, only: [:edit, :update]
+
 
 
 

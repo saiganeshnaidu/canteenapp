@@ -1,39 +1,58 @@
 class CartsController < ApplicationController
-    def new
-      @cart=Cart.new
-      @foodstore=Foodstore.find(params[:sid])
-      
+  before_action :validate_employee?, only: [:new, :show]
+  before_action :validate_customer?, only: [:new, :show, :edit]
+  before_action :order_status_access, only: [:edit]
+  
+  def new
+    @cart=Cart.new
+    @foodstore=Foodstore.find(params[:sid])
+  end
+
+  def create
+    @cart = Cart.new(cart_params)    
+    if @cart.save
+      redirect_to new_cart_list_path(:cid => @cart.id)
+    else
+      render :new, status: :unprocessable_entity
     end
-    def create
-        @cart = Cart.new(cart_params)
-        
-    
-        if @cart.save
-          redirect_to new_cart_list_path(:cid => @cart.id)
-        else
-          render :new, status: :unprocessable_entity
-        end
-      end
-   def show
+  end
+
+  def show
     @foodcategory = Foodcategory.find(params[:id])
     @foodstore=@foodcategory.foodstores
-   end
-   def index
+  end
+
+  def index
     @foodcategories=Foodcategory.all
     @carts=Cart.all
-   end
-   def edit
-    @cart=Cart.find(params[:id])
-   end
-   def update
-    @cart = Cart.find(params[:id])
+  end
 
+  def edit
+    @cart=Cart.find(params[:id])
+    @total=0
+  end
+
+  def update
+    @cart = Cart.find(params[:id])
     if @cart.update(cart_params)
+      if admin?
+        redirect_to carts_path, flash: { success: "Order status updated" }
+      elsif chef?
+        redirect_to order_path, flash: { success: "Order status updated" }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
   end
-   private
+
+  def destroy
+    @cart = Cart.find(params[:id])
+    @cart.destroy
+    redirect_to root_path, status: :see_other
+  end
+
+  private
+
     def cart_params
       params.require(:cart).permit(:user_id, :foodstore_id, :order_status)
     end

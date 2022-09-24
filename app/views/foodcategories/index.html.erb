@@ -1,13 +1,16 @@
-<h2>Foodcategories</h2>
+<% if @foodcategories.present? %>
+<h2 class="text-center" >Foodcategories</h2>
 
 <% @foodcategories.each do |x| %>
     <%= link_to x.name, x %> <br><br>
 <% end %>
+<% end %>
+
 
 <br> <br> <br>
-<% if Current.user  %>
-    <% if Current.user.usertype=="Admin" && Current.user.email=="ganesh@gmail.com"%>
-        <%= link_to "Add new foodcategory", new_foodcategory_path %>
-    <% end %>
+<h2 class="text-center" >Add new category </h2>
+
+<% if admin?  %>
+    <%= render 'form' %>
 <% end %>
 

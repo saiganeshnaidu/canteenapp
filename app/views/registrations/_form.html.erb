@@ -1,29 +1,45 @@
-<%= form_with model: @user, url: sign_up_path do |f| %>
-    <p>
-    <%= f.label 'email' %><br>
-    <%= f.text_field :email %>
-    </p>
-  
-  
-    <p>
-    <%= f.label 'password' %><br>
-    <%= f.password_field :password %>
-    </p>
-  
-  
-    <p>
-    <%= f.label 'password_confirmation' %><br>
-    <%= f.password_field :password_confirmation %>
-    </p>
-  
-  
-    <p>
-    <%= f.label 'usertype' %><br>
-    <%= f.select :usertype, ['Employee', 'Chef', 'Ordinary people']%>
-    </p>
-  
-  
-    <p>
-    <%= f.submit 'Sign Up' %>
-    </p>
-  <% end %>
+
+
+  <div class="row justify-content-center p-3">
+  <h1 class="text-center">Sign Up Page</h1>
+  <%= form_with(model: @user, url: sign_up_path, data: { turbo: false }, class: "col-md-6 col-md-offset-3 d-grid gap-3") do |form| %>
+
+    <% invalid = check_errors(@user, :email) %>
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, class: "form-control #{'is-invalid' if invalid}", placeholder: "Enter your e-mail address" %>
+      <%= check_valid(@user, :email, invalid) %>
+    </div>
+
+    <% invalid = check_errors(@user, :password) %>
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control #{'is-invalid' if invalid}", placeholder: "Choose a Password" %>
+      <%= check_valid(@user, :password, invalid) %>
+    </div>
+    
+    <% invalid = check_errors(@user, :password_confirmation) %>
+    <div class="form-group">
+      <%= form.label :password_confirmation %>
+      <%= form.text_field :password_confirmation, class: "form-control #{'is-invalid' if invalid}", placeholder: "Confirm Password" %>
+      <%= check_valid(@user, :password_confirmation, invalid) %>
+    </div>
+    <% invalid = check_errors(@user, :usertype) %>
+    <div class="form-group">
+      <%= form.label :usertype %>
+      <%= form.select :usertype, ['Employee', 'Chef', 'Ordinary people'] , class: "form-control #{'is-invalid' if invalid}", placeholder: "Enter your e-mail address" %>
+      <%= check_valid(@user, :usertype, invalid) %>
+    </div>
+    <div class="text-center">
+      <%= form.submit :SignUp, class: "btn btn-primary" %>
+    </div>
+
+    <div class="text-center">
+      <p>already member? <%= link_to "Login", sign_in_path %></p>
+    </div>
+  <%end%>
+  <div class="text-center">
+    <%= link_to 'Log in with google', '/auth/google_oauth2', method: :post, class:"btn btn-secondary" %>
+    <%= link_to 'Log in with facebook', '/auth/facebook', method: :post, class:"btn btn-primary" %>
+  </div>
+</div>

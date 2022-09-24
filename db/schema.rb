@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_071134) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_155629) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -134,7 +134,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_071134) do
     t.text "context"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "normal_customers", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.bigint "user_id", null: false
+    t.boolean "isapproved", default: false
+    t.boolean "isrejected", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_normal_customers_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -162,6 +175,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_071134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "usertype"
+    t.string "uid"
+    t.string "provider"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -177,5 +192,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_071134) do
   add_foreign_key "fooditems", "foodstores"
   add_foreign_key "foodstores", "foodcategories"
   add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "normal_customers", "users"
   add_foreign_key "rooms", "carts"
 end

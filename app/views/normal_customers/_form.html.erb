@@ -1,0 +1,23 @@
+<div class="row justify-content-center p-3">
+  <h1 class="text-center">Complete your profile</h1>
+  <%= form_with( model: @customer, url: customer_detail_path, data: { turbo: false }, class: "col-md-6 col-md-offset-3 d-grid gap-2") do |form| %>
+    <div class="form-outline mb-4">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Enter name", required: true %>
+    </div>
+
+    <%= form.hidden_field :user_id, value: Current.user.id %>
+
+    <div class="form-outline mb-4">
+      <%= form.label :phone %><br>
+      <%= form.number_field :phone, class: "form-control", placeholder: "Enter phone number", required: true %>
+    </div>
+
+    
+
+    <div class="text-center">
+      <%= form.submit 'Submit', class: "btn btn-primary btn-block mb-4" %>
+    </div>
+
+  <% end %>
+</div>

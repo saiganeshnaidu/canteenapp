@@ -1,7 +1,10 @@
 class RoomsController < ApplicationController
-  def index
+  before_action :validate_chef?
+  before_action :validate_employee?
 
+  def index
   end
+
   def show
     @room = Room.find(params[:id])
     @message = Message.new
@@ -16,28 +19,21 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-
-
     if @room.save
       redirect_to @room
     else
       render :new, status: :unprocessable_entity
     end
   end
+
   def destroy
     @room = Room.find(params[:id])
-
     @messages = @room.messages.where(room_id: @room.id) 
     @messages.each do |msg|
-    msg.destroy
+      msg.destroy
+    end
   end
-  if Current.user && Current.user.usertype=="Employee"
-  redirect_to Current.user.employee_profile
-  else
-    redirect_to order_path(:chefid=> Current.user.chef_profile.id)
-
-  end
-  end
+  
   private
   def room_params
     params.require(:room).permit(:cart_id)

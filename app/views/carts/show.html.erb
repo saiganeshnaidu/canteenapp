@@ -1,7 +1,12 @@
-<h2> Cart show </h2>
+<h2 class="text-center"> Avilable food stores </h2>
 
-<% @foodstore.each do |x| %>
-    <%= link_to x.name, new_cart_path(:sid => x.id) %>
-
-    <br>
-<% end %>
+<div class="full-store">
+  <% @foodstore.each do |x| %>  
+    <div class="card store" style="width: 15rem;">
+      <%= image_tag(x.image, style:"width:13rem; height:220px;") if x.image %>
+      <div class="card-body">
+        <%= link_to x.name, new_cart_path(:sid => x.id), class:"btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>
