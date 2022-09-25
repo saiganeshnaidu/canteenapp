@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_24_114849) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_25_163715) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_114849) do
   create_table "cart_lists", force: :cascade do |t|
     t.bigint "cart_id", null: false
     t.bigint "fooditem_id", null: false
-    t.integer "quantity", default: 1
+    t.integer "quantity", default: 1, null: false
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,8 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_114849) do
   end
 
   create_table "chefprofiles", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
+    t.string "name", null: false
+    t.string "phone", null: false
     t.bigint "user_id", null: false
     t.bigint "foodstore_id", null: false
     t.boolean "isapproved", default: false
@@ -93,8 +93,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_114849) do
   end
 
   create_table "employee_profiles", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
+    t.string "name", null: false
+    t.string "phone", null: false
     t.bigint "user_id", null: false
     t.bigint "company_id", null: false
     t.boolean "isapproved"
@@ -112,9 +112,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_114849) do
   end
 
   create_table "fooditems", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.text "description"
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.text "description", null: false
     t.bigint "foodstore_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -122,7 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_114849) do
   end
 
   create_table "foodstores", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "foodcategory_id", null: false
@@ -140,8 +140,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_114849) do
   end
 
   create_table "normal_customers", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
+    t.string "name", null: false
+    t.string "phone", null: false
     t.bigint "user_id", null: false
     t.boolean "isapproved", default: false
     t.boolean "isrejected", default: false

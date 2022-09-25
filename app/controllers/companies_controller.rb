@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
   before_action :admin_controls
 
   def index
+    @company = Company.new
     @companies=Company.all
   end
 

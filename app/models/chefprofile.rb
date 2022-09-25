@@ -4,8 +4,7 @@ class Chefprofile < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many_attached :pictures, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 20, minimum: 3 }
-  validates :phone, presence: true, uniqueness: true
-  validates :user_id, presence: true, uniqueness: true
-  validates :foodstore_id, presence: true
+  validates :name, length: { maximum: 20, minimum: 3 }
+  validates :phone, uniqueness: true
+  validates :user_id, uniqueness: true
 end

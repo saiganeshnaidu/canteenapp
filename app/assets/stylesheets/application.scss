@@ -40,11 +40,17 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.bg-image{
+.order-img{
+  position: relative;
+}
+.order-button{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  
+}
+.img-responsive{
   width: 100%;
-  background-size: contain;
-  height: 100vh;  
-  background-repeat: no-repeat;
 }
 .msg-content{
    width: 85%;
@@ -76,4 +82,7 @@
 }
 .btn-dark{
   margin: 20px;
+}
+.admin-page{
+  margin-top: 150px;
 }

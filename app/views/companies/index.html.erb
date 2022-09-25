@@ -4,6 +4,9 @@
     <h5><%= link_to x.name, x, style:"text-decoration:none;"%> </h5> <br>
 
     <% end %>
-    <br> <br> <br>
-    <%= link_to "Add new company", new_company_path, class:"btn btn-dark" %>
+    <br> <br> 
     <% end %>
+    <h2 class="text-center"> Add new company </h2>
+
+<%= render 'form' %>
+ 

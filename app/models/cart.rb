@@ -5,9 +5,6 @@ class Cart < ApplicationRecord
   has_one  :room
   has_noticed_notifications model_name: 'Notification'
   has_many :notifications, through: :chefprofile, dependent: :destroy
-
-  validates :user_id, presence: true
-  validates :foodstore_id, presence: true
   
   after_create_commit :notify_recipient
   after_update_commit :notify_customer

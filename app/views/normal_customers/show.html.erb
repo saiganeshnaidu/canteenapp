@@ -1,9 +1,8 @@
-<div class="bg-image" style="background-image: url('https://health.clevelandclinic.org/wp-content/uploads/sites/3/2021/01/fastFoods1-1199461884-770x533-1.jpg');">
+<div class="order-img">
+<%= image_tag ("/assets/img2.jpg"), class: "img-responsive"%>
+<div class="order-button">
 
+<%= link_to "Create Order", carts_path, class:"btn btn-primary" %> <br> <br>
 
-
-<%= link_to "Create order", carts_path, class:"btn btn-primary"%> <br> <br>
-
-<%= button_to 'Logout', logout_path, method: :delete %> <br><br>
-
+</div>
 </div>

@@ -5,5 +5,5 @@ class Foodstore < ApplicationRecord
     has_many :carts, dependent: :destroy
     has_one_attached :image
 
-    validates :name, presence: true, uniqueness: true
+    validates :name, uniqueness: true
 end

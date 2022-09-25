@@ -34,6 +34,7 @@ class ChefprofilesController < ApplicationController
   end
 
   def show
+    @heading="Chef Dashboard"
     @chef_pro=Chefprofile.find(params[:id])
     @fstore=Foodstore.find(@chef_pro.foodstore_id)
     @fcat=Foodcategory.find(@fstore.foodcategory_id)
@@ -50,8 +51,6 @@ class ChefprofilesController < ApplicationController
   def destroy
     @chef = Chefprofile.find(params[:id])
     @chef.destroy
-    @user=User.find(@chef.user_id)
-    @user.destroy
     redirect_to root_path, status: :see_other
   end
 

@@ -10,7 +10,5 @@ class User < ApplicationRecord
 
     has_secure_password
     validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
-    #VALID_PASSWORD = /\A(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}\z/
-  
-    #validates :password, confirmation: true, format: { with: VALID_PASSWORD, message: 'Minimum six characters, at least one letter, one number and one special character' }, unless: -> { password.blank? }
+    
 end
