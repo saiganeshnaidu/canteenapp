@@ -12,8 +12,7 @@
         <div class="dropdown">
           <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><%= Current.user.email %></a>
           <div class="dropdown-menu">
-          <%= button_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %>
-
+            <%= button_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %>
           </div>
         </div>
       <% end %>

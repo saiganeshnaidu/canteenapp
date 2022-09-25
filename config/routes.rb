@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#omniauth'
   get '/auth/facebook/callback', to: 'sessions#omniauth'
 
-
   resources :foodcategories do
     resources :foodstores do
       resources :fooditems
     end
   end
+
   get '/order_history', to: "employee_profiles#order_history"
   get '/order', to: "chefprofiles#order"
   get '/notice', to: "chefprofiles#notice"
@@ -34,15 +34,13 @@ Rails.application.routes.draw do
   get '/noticee', to: "employee_profiles#noticee"
   get '/admin_notice', to: "welcome#admin_notice"
   get '/admin_dashboard', to: "welcome#admin_dashboard"
-
   get '/approvals', to: "welcome#approval"
-
   get '/customer_notice', to: "normal_customers#customer_notice"
-
 
   resources :rooms do
     resources :messages
   end
+
   resources :employee_profiles, only: [:index, :show, :edit, :update]
   resources :chefprofiles, only: [:index, :show, :edit, :update]
   resources :normal_customers, only: [:index, :show, :edit, :update]
@@ -52,9 +50,6 @@ Rails.application.routes.draw do
   resources :cart_lists
   resources :companies
   resources :registrations, only: [:edit, :update]
-
-
-
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

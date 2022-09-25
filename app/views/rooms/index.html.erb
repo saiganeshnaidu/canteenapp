@@ -1,21 +1,19 @@
 <%= turbo_stream_from @room %>
 <div id="messages">
-<%= render @messages %>
-
+  <%= render @messages %>
 </div>
 
-
 <%= form_with model: [@room ,@message], remote: true do |f| %>
-    <%= f.hidden_field :room_id, value: @room.id  %>
-    <%= f.hidden_field :user_id, value: Current.user.id  %>
-    <%= f.text_field :context, class: "msg-content" %>
-    <%= f.submit "send message", class: "btn btn-primary"  %>
-  <% end %> <br>
+  <%= f.hidden_field :room_id, value: @room.id  %>
+  <%= f.hidden_field :user_id, value: Current.user.id  %>
+  <%= f.text_field :context, class: "msg-content" %>
+  <%= f.submit "send message", class: "btn btn-primary"  %>
+<% end %> <br>
 
 <% if employee? %>
   <%= link_to "Go Back", order_history_path %>
-  <% elsif customer? %>
+<% elsif customer? %>
   <%= link_to "Go Back", order_history_path %>
 <% else %>
-<%= link_to "Go Back", order_path(:chefid=> Current.user.chef_profile) %>
+  <%= link_to "Go Back", order_path(:chefid=> Current.user.chef_profile) %>
 <% end %>

@@ -22,6 +22,7 @@ module CartsHelper
             false
         end
     end
+
     def set_validated_user
         if validate_employee?
             @cur_validated_user=Current.user.employee_profile.isapproved
@@ -33,4 +34,5 @@ module CartsHelper
 
         end
     end
+    
 end

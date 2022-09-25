@@ -14,28 +14,22 @@
   <h5> You need admin approval for ordering food </h4>
 <% end %>
 
-
-
-
-
-
-
 <% if admin? %>
   <h2 class="text-center" > All orders </h2>
   <% @carts.reverse.each do |x| %>
     <div class="order-list">
-    <div>
-    <%=x.user.email %> Ordered on
+      <div>
+        <%=x.user.email %> Ordered on
         <%= x.created_at %> in
         <%=x.foodstore.name %> restaurant
         <%= link_to "Open order", edit_cart_path(x) %> 
-        </div>
-        <div>
+      </div>
+      <div>
         <%= form_with model: x do |form| %>
-            <%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: x.order_status%> 
-              <%= form.submit "change status" %>
-          </div>
-          </div>
+          <%= form.select :order_status, ['Placed', 'Received', 'cooking', 'Finished', 'Delivered'], value: x.order_status%> 
+          <%= form.submit "change status" %>
+      </div>
+    </div>
     <% end %>
 <% end %>
 <% end %>

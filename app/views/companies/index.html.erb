@@ -1,12 +1,11 @@
 <% if @companies.present? %>
-<h2 class="text-center">Companies</h2>
-<% @companies.each do |x| %>
+  <h2 class="text-center">Companies</h2>
+  <% @companies.each do |x| %>
     <h5><%= link_to x.name, x, style:"text-decoration:none;"%> </h5> <br>
+  <% end %><br> <br> 
+<% end %>
 
-    <% end %>
-    <br> <br> 
-    <% end %>
-    <h2 class="text-center"> Add new company </h2>
+<h2 class="text-center"> Add new company </h2>
 
 <%= render 'form' %>
  

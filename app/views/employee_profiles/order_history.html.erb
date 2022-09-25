@@ -1,28 +1,18 @@
-
-
-
 <% @history.reverse.each do |x| %>
-
   <% @total=0 %>
-    <div class="card history-card">
+  <div class="card history-card">
     <div class="card-body">
-    <div class="order-details">
-    <h2> <%= x.foodstore.name %> </h2>
-    <h5> <%= x.order_status %>  </h4>
-     </div>
-
-       Ordered on:<%= x.created_at %>
-
+      <div class="order-details">
+        <h2> <%= x.foodstore.name %> </h2>
+        <h5> <%= x.order_status %>  </h4>
+      </div>
+      Ordered on:<%= x.created_at %>
       <%= link_to "View menu", cart_lists_path(:cid=> x.id) %>
-
-        <% x.cart_lists.each do |y| %>
-            <% @v=Fooditem.find(y.fooditem_id) %>
-            
-             <% @total+= @v.price* y.quantity %> 
-        <% end %> <br>
-        <strong> Total amount: </strong> <%= @total %> <br>
-        
-        </div>
-        </div>
-
+      <% x.cart_lists.each do |y| %>
+        <% @v=Fooditem.find(y.fooditem_id) %>
+        <% @total+= @v.price* y.quantity %> 
+      <% end %> <br>
+      <strong> Total amount: </strong> <%= @total %> <br>
+    </div>
+  </div>
 <% end %>
