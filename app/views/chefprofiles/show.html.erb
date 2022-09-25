@@ -1,13 +1,13 @@
 
-<h4> Welcome to chef dashboard </h4> 
+<h4> Chef Dashboard </h4> 
 <%= @chef_pro.name %> 
 
 <br> <br>
 <%if validate_chef? %>
-<%= link_to 'Received orders', order_path %><br>
-<%= link_to "Add food items", [@fstore.foodcategory, @fstore] %> <br>
-<%= link_to "Notificatios", notice_path %> <br>
-<%= link_to "gallery", edit_chefprofile_path %> <br>
+<%= link_to "Add food items", [@fstore.foodcategory, @fstore], class:"btn btn-primary" %> <br><br>
+<%= link_to "Gallery", edit_chefprofile_path, class:"btn btn-primary" %> <br>
+
+
 
     
 

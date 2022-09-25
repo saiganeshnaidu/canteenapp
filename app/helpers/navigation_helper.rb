@@ -14,7 +14,7 @@ module NavigationHelper
 
 
         elsif (chef? && validate_chef?)
-          (link_to 'Orders', order_path, class: "#{style} header-space") +
+          (link_to 'Received Orders', order_path, class: "#{style} header-space") +
           (link_to 'Notifications', notice_path, class: "#{style} header-space") +
           (link_to 'Dashboard', chefprofile_path(Current.user.chef_profile), class: "#{style} header-space")
 

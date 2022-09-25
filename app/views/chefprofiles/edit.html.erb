@@ -6,10 +6,10 @@
   <div>
     <%= form.label :pictures %><br>
     <%= form.file_field :pictures, multiple: true %>
-  </div><br><br>
+  </div><br>
   <div>
     <%= form.submit "Upload" %>
   </div>
-<% end %>
+<% end %><br><br>
 
-<%= link_to "Go to dashboard", @chef_pro %>
+<%= link_to "Go to dashboard", @chef_pro, class:"btn btn-primary" %>

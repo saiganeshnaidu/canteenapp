@@ -2,25 +2,28 @@
 <h4> <%= @cartid.foodstore.name %> </h4>
 
 <table class="table" >
-  <thread><th> Item Name </th>
-  <th>  Quantity </th>
-  <th>  Price </th>
+  <thread>
+    <th> Item Name </th>
+    <th>  Quantity </th>
+    <th>  Price </th>
   </thread>
   <tbody>
-  <% @cartid.cart_lists.each do |x| %>
-    <tr> <td> <%= x.fooditem.name %> </td>
-    <td> <%= x.quantity %>  </td>
-    <td> <%= x.quantity * x.fooditem.price %> </td>    
-    </tr>
-    <% @total+=x.quantity * x.fooditem.price %>
-    </tbody>
-  <% end %>
+    <% @cartid.cart_lists.each do |x| %>
+      <tr> 
+        <td> <%= x.fooditem.name %> </td>
+        <td> <%= x.quantity %>  </td>
+        <td> <%= x.quantity * x.fooditem.price %> </td>    
+      </tr>
+      <% @total+=x.quantity * x.fooditem.price %>
+    <% end %>
+  </tbody>
 </table>
     
-<div class="order-details"> <strong>Grand total:  <%= @total  %> </strong>
-  <strong> order status: <%= @cartid.order_status %>  </strong> 
+<div class="order-details"> 
+  <strong>Grand total:  <%= @total  %> </strong>
+  <strong> order status: <%= @cartid.order_status %> </strong> 
 </div> <br><br>
-<div>
+
 <% if employee? %>
   <%= link_to "<-Goto dashboard", Current.user.employee_profile, class:"btn btn-primary" %>
 <% else %>

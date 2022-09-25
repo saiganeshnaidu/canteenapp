@@ -1,5 +1,9 @@
+<% if @companies.present? %>
+<h2 class="text-center">Companies</h2>
 <% @companies.each do |x| %>
-    <%= link_to x.name, x %> <br><br>
+    <h5><%= link_to x.name, x, style:"text-decoration:none;"%> </h5> <br>
+
     <% end %>
     <br> <br> <br>
-    <%= link_to "Add new company", new_company_path %>
+    <%= link_to "Add new company", new_company_path, class:"btn btn-dark" %>
+    <% end %>

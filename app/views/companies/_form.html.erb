@@ -1,9 +1,13 @@
-<%= form_with model: @companies do |form| %>
-    <div>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
-    </div>
-    <div>
-      <%= form.submit %>
+  <%= form_with(model: @companies) do |f| %>
+    <div class="card-body">
+  
+      <div class="mb-3">
+        <%= f.label :name, { class: "form-label"} %>
+        <%= f.text_field :name, { class: "form-control", placeholder: "Food category Name" } %>
+      </div>
+
+      
+      <%= f.submit "Add Company", class: "btn btn-primary" %>
+  
     </div>
   <% end %>

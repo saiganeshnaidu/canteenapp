@@ -1,14 +1,33 @@
 <% if @foodcategories.present? %>
-<h2 class="text-center" >Foodcategories</h2>
 
+<h2 class="text-center" >Foodcategories </h2><br>
+<table class="table table-striped">
+<thread>
+<th>category name</th>
+<th>Edit</th>
+<th>Delete</th>
+
+</thread>
 <% @foodcategories.each do |x| %>
-    <%= link_to x.name, x %> <br><br>
+    <tbody>
+    <tr>
+
+   <td> <%= link_to x.name, x, style:"text-decoration:none;"%>  </td>
+   <td><%= link_to "Edit foodcategory", edit_foodcategory_path(x), style:"text-decoration:none;" %> 
+   </td>
+   <td> <%= button_to "Delete foodcategory", x, method: :delete %> 
+   </td>
+
+
+</tr>
+</tbody>
 <% end %>
+</table>
 <% end %>
 
 
 <br> <br> <br>
-<h2 class="text-center" >Add new category </h2>
+<h3 class="text-center" >Add new category </h3>
 
 <% if admin?  %>
     <%= render 'form' %>

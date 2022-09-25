@@ -45,7 +45,15 @@ class ChefprofilesController < ApplicationController
 
   def notice
 
-end
+  end
+
+  def destroy
+    @chef = Chefprofile.find(params[:id])
+    @chef.destroy
+    @user=User.find(@chef.user_id)
+    @user.destroy
+    redirect_to root_path, status: :see_other
+  end
 
   private
 

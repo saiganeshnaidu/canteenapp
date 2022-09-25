@@ -1,63 +1,59 @@
-<h2 class="text-center" > All users approvals </h2>
+<h2 class="text-center" > Users waiting for approvals </h2>
 
 <% @emp_pros.each do |x| %>
-    <% if !(x.isapproved) && !(x.isrejected) %>
+  <% if !(x.isapproved) && !(x.isrejected) %>
     <div class="order-list">
-    <div>
-    <strong>Employee name: </strong> <%= x.name %> 
-    <strong>Role: </strong> <%= x.user.usertype %>
-    </div>
-    <div>
-    <%= form_with model: x do |form| %>
-    
-      Approve: <%= form.check_box :isapproved %>
-    
-     
-    
-           Reject: <%= form.check_box :isrejected %> 
+      <div class="approve-details">
+        <strong> Name: </strong> <%= x.name %> 
+        <strong>Role: </strong> <%= x.user.usertype %>
+        <strong> Company: </strong> <%= x.company.name %> 
+      </div>
+      <div>
+        <%= form_with model: x do |form| %>
+          Approve: <%= form.check_box :isapproved %>    
+          Reject: <%= form.check_box :isrejected %> 
           <%= form.submit '  Apply  ' %> 
-
-      <% end %>
-      </div>
-
-      </div>
-
         <% end %>
-
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
 <% @chef_pros.each do |x| %>
-    <% if !(x.isapproved) && !(x.isrejected) %>
-    <strong>Chef name: </strong> <%= x.name %> 
-    <strong>Role: </strong>  <%= x.user.usertype %>
-    <%= form_with model: x do |form| %>
-    
-        Approve: <%= form.check_box :isapproved %> 
-           Reject: <%= form.check_box :isrejected %> 
+  <% if !(x.isapproved) && !(x.isrejected) %>
+    <div class="order-list">
+      <div class="approve-details">
+        <strong>Name: </strong> <%= x.name %> 
+        <strong>Role: </strong> <%= x.user.usertype %>
+        <strong> Restaurant: </strong> <%= x.foodstore.name %> 
+      </div>
+      <div>
+        <%= form_with model: x do |form| %>
+          Approve: <%= form.check_box :isapproved %>    
+          Reject: <%= form.check_box :isrejected %> 
           <%= form.submit '  Apply  ' %> 
-      <% end %>
-    
-    <br> <br>
-    <% end %>
-
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
-
-
-
-
 
 <% @customers.each do |x| %>
-    <% if !(x.isapproved) && !(x.isrejected) %>
-     <strong>Customer name: </strong> <%= x.name %> <br>
-    <%= form_with model: x do |form| %>
-    
-       Approve: <%= form.check_box :isapproved %> 
-        Reject: <%= form.check_box :isrejected %> 
+  <% if !(x.isapproved) && !(x.isrejected) %>
+    <div class="order-list">
+      <div class="approve-details">
+        <strong>Name: </strong> <%= x.name %> 
+        <strong>Role: </strong> <%= x.user.usertype %>
+      </div>
+      <div>
+        <%= form_with model: x do |form| %>
+          Approve: <%= form.check_box :isapproved %>    
+          Reject: <%= form.check_box :isrejected %> 
           <%= form.submit '  Apply  ' %> 
-      <% end %>
-    
-    <br> <br>
-    <% end %>
-
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
+
 
