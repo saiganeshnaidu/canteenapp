@@ -3,9 +3,7 @@
 <% if Current.user %>
   Logged in as: <%= Current.user.usertype %><br><br>
 <% else %>
-  <%= link_to 'Sign Up', sign_up_path %>
-  or
-  <%= link_to 'Login', sign_in_path %>
+  <p>Create your account now via above links!!</p>
 <% end %>
 
 <% if employee? %>

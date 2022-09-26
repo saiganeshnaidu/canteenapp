@@ -14,6 +14,7 @@ class WelcomeController < ApplicationController
   end
 
   def admin_dashboard
+    @heading="Admin Dashboard"
   end
   
 end
