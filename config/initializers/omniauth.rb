@@ -12,4 +12,3 @@ end
 OmniAuth.config.allowed_request_methods = %i[get]
 
 
-Rails.application.config.middleware.insert_before(OmniAuth::Builder, RescueAuthTokenFromOmniauth)
