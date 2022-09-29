@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.0"
+ruby "3.0.0"
 
 gem "noticed", "~> 1.5"
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
