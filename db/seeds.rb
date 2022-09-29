@@ -12,10 +12,10 @@ puts "Admin has been created"
 Company.create!([{name: "Kreeti Technologies"}, {name: "KT-core"}, {name: "Kreeti Pvt Lmt"}])
 puts "Companies are created"
 
-FoodCategory.create!([{name: "North Indian"}, {name: "South Indian"}, {name: "Chinese"}])
+Foodcategory.create!([{name: "North Indian"}, {name: "South Indian"}, {name: "Chinese"}])
 puts "Foodcategories are created"
 
-Foodstore.create!([{name: "North spices", foodcategory_id:FoodCategory.first.id }, {name: "Street Byte", foodcategory_id:FoodCategory.first.id }])
+Foodstore.create!([{name: "North spices", foodcategory_id:Foodcategory.first.id }, {name: "Street Byte", foodcategory_id:Foodcategory.first.id }])
 puts "Foodstores are created"
 
 User.create!(email: "sai@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Employee")
