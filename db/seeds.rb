@@ -10,6 +10,10 @@ User.delete_all
 EmployeeProfile.delete_all
 Chefprofile.delete_all
 NormalCustomer.delete_all
+Foodcategory.delete_all
+Foodstore.delete_all
+Fooditem.delete_all
+Company.delete_all
 
 User.create!(email:"ganeshadmin1@gmail.com", password:"997777@Sn", password_confirmation:"997777@Sn", usertype:"Admin")
 puts "Admin has been created"
