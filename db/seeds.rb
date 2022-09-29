@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create!(email:"ganeshadmint@gmail.com", password:"997777@Sn", password_confirmation:"997777@Sn", usertype:"Admin")
+User.create!(email:"ganeshadmin1@gmail.com", password:"997777@Sn", password_confirmation:"997777@Sn", usertype:"Admin")
 puts "Admin has been created"
 
 Company.create!([{name: "Kreeti Technologies"}, {name: "KT-core"}, {name: "Kreeti Pvt Lmt"}])
@@ -18,15 +18,15 @@ puts "Foodcategories are created"
 Foodstore.create!([{name: "North spices", foodcategory_id:Foodcategory.first.id }, {name: "Street Byte", foodcategory_id:Foodcategory.first.id }])
 puts "Foodstores are created"
 
-User.create!(email: "sai@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Employee")
+User.create!(email: "sait1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Employee")
 EmployeeProfile.create!(name: "Sai Ganesh", phone: "9014632028", company_id: Company.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created employee profile"
 
-User.create!(email: "ganesh@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Chef")
+User.create!(email: "ganesht1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Chef")
 Chefprofile.create!(name: "Ganesh", phone: "9014632029", foodstore_id: Foodstore.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created chef profile"
 
-User.create!(email: "tganesh@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Normal Customer")
+User.create!(email: "tganeshs1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Normal Customer")
 NormalCustomer.create!(name: "SGani", phone: "9014632028", user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created normal cusomer profile"
 
