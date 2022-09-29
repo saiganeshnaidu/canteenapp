@@ -3,6 +3,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.0"
 
+gem "noticed", "~> 1.5"
+gem 'bcrypt', '~> 3.1', '>= 3.1.18'
+gem 'bootstrap', '~> 5.1.3'
+gem 'dotenv-rails'
+gem 'jquery-rails'
+gem 'omniauth', '~> 2.1'
+gem 'omniauth-facebook', '~> 9.0'
+gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
+gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
+gem 'ordinare', '~> 0.4.0'
+gem 'pry', '~> 0.14.1'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
 
@@ -63,15 +75,5 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  gem "noticed", "~> 1.5"
-  gem 'bcrypt', '~> 3.1', '>= 3.1.18'
-  gem 'bootstrap', '~> 5.1.3'
-  gem 'dotenv-rails'
-  gem 'jquery-rails'
-  gem 'omniauth', '~> 2.1'
-  gem 'omniauth-facebook', '~> 9.0'
-  gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
-  gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
-  gem 'ordinare', '~> 0.4.0'
-  gem 'pry', '~> 0.14.1'
+
 end
