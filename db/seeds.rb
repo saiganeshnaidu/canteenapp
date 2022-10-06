@@ -28,7 +28,7 @@ Foodstore.create!([{name: "North spices", foodcategory_id:Foodcategory.first.id 
 puts "Foodstores are created"
 
 User.create!(email: "sait1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Employee")
-EmployeeProfile.create!(name: "Sai Ganesh", phone: "9014632028", company_id: Company.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
+EmployeeProfile.create!(name: "Sai Ganesh", phone: "9014632028", company_id: Company.first.id, user_id: User.last.id, isapproved: true, isrejected:false)
 puts "created employee profile"
 
 User.create!(email: "ganesht1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Chef")
