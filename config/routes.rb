@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#omniauth'
   get '/auth/facebook/callback', to: 'sessions#omniauth'
 
-  resources :foodcategories do
+  resources :food_categories do
     resources :food_stores do
       resources :food_items
     end

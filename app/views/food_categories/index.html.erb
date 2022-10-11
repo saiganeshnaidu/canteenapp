@@ -10,7 +10,7 @@
       <tbody>
         <tr>
           <td> <%= link_to x.name, x, style:"text-decoration:none;"%>  </td>
-          <td><%= link_to "Edit foodcategory", edit_foodcategory_path(x), style:"text-decoration:none;" %> </td>
+          <td><%= link_to "Edit foodcategory", edit_food_category_path(x), style:"text-decoration:none;" %> </td>
           <td> <%= button_to "Delete foodcategory", x, method: :delete %> </td>
         </tr>
       </tbody>

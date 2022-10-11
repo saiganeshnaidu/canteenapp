@@ -10,7 +10,7 @@ User.delete_all
 EmployeeProfile.delete_all
 Chefprofile.delete_all
 NormalCustomer.delete_all
-Foodcategory.delete_all
+FoodCategory.delete_all
 FoodStore.delete_all
 FoodItem.delete_all
 Company.delete_all
@@ -21,10 +21,10 @@ puts "Admin has been created"
 Company.create!([{name: "Kreeti Technologies"}, {name: "KT-core"}, {name: "Kreeti Pvt Lmt"}])
 puts "Companies are created"
 
-Foodcategory.create!([{name: "North Indian"}, {name: "South Indian"}, {name: "Chinese"}])
+FoodCategory.create!([{name: "North Indian"}, {name: "South Indian"}, {name: "Chinese"}])
 puts "Foodcategories are created"
 
-FoodStore.create!([{name: "North spices", foodcategory_id:Foodcategory.first.id }, {name: "Street Byte", foodcategory_id:Foodcategory.first.id }])
+FoodStore.create!([{name: "North spices", food_category_id:FoodCategory.first.id }, {name: "Street Byte", food_category_id:FoodCategory.first.id }])
 puts "Foodstores are created"
 
 User.create!(email: "sait1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Employee")

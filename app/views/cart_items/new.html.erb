@@ -3,7 +3,7 @@
 
 <% @foodstore.food_items.each do |x| %>
   <div class="d-flex food-item" >
-    <%= image_tag(x.item_image, style:"width:200px; height:160px;") if x.item_image %>
+    <%= image_tag(x.item_image, style:"width:170px; height:120px;") if x.item_image %>
     <div class="d-flex flex-column justify-content-between">
       <h5><%= x.name %> </h5>
       <p><%= x.description %> </p>

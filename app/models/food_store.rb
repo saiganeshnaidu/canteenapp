@@ -1,5 +1,5 @@
 class FoodStore < ApplicationRecord
-  belongs_to :foodcategory
+  belongs_to :food_category
     has_many :food_items, dependent: :destroy
     has_many :chefprofiles, dependent: :destroy
     has_many :carts, dependent: :destroy

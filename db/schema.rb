@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_105255) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_11_112656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,6 +105,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_105255) do
     t.index ["user_id"], name: "index_employee_profiles_on_user_id"
   end
 
+  create_table "food_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "food_items", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
@@ -117,16 +123,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_105255) do
 
   create_table "food_stores", force: :cascade do |t|
     t.string "name"
-    t.bigint "foodcategory_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["foodcategory_id"], name: "index_food_stores_on_foodcategory_id"
-  end
-
-  create_table "foodcategories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint "food_category_id", null: false
+    t.index ["food_category_id"], name: "index_food_stores_on_food_category_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -190,7 +190,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_105255) do
   add_foreign_key "employee_profiles", "companies"
   add_foreign_key "employee_profiles", "users"
   add_foreign_key "food_items", "food_stores"
-  add_foreign_key "food_stores", "foodcategories"
+  add_foreign_key "food_stores", "food_categories"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "normal_customers", "users"

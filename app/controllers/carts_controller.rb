@@ -19,12 +19,12 @@ class CartsController < ApplicationController
   end
 
   def show
-    @foodcategory = Foodcategory.find(params[:id])
+    @foodcategory = FoodCategory.find(params[:id])
     @foodstore=@foodcategory.food_stores
   end
 
   def index
-    @foodcategories=Foodcategory.all
+    @foodcategories=FoodCategory.all
     @carts=Cart.all
   end
 

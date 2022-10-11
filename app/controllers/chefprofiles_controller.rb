@@ -37,7 +37,7 @@ class ChefprofilesController < ApplicationController
     @heading="Chef Dashboard"
     @chef_pro=Chefprofile.find(params[:id])
     @fstore=FoodStore.find(@chef_pro.food_store_id)
-    @fcat=Foodcategory.find(@fstore.foodcategory_id)
+    @fcat=FoodCategory.find(@fstore.food_category_id)
   end
 
   def order

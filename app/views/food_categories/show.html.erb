@@ -4,7 +4,7 @@
   <h3 class="text-center" >Available foodstores on above category</h3>
   <% @foodcategories.food_stores.each do |f| %>
     <p>
-      <h5><%= link_to f.name, [f.foodcategory, f], style:"text-decoration:none;"%> </h5> <br><br>
+      <h5><%= link_to f.name, [f.food_category, f], style:"text-decoration:none;"%> </h5> <br><br>
     </p>
   <% end %>
 <% end %>
