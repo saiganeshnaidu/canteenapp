@@ -11,7 +11,7 @@ EmployeeProfile.delete_all
 Chefprofile.delete_all
 NormalCustomer.delete_all
 Foodcategory.delete_all
-Foodstore.delete_all
+FoodStore.delete_all
 Fooditem.delete_all
 Company.delete_all
 
@@ -24,7 +24,7 @@ puts "Companies are created"
 Foodcategory.create!([{name: "North Indian"}, {name: "South Indian"}, {name: "Chinese"}])
 puts "Foodcategories are created"
 
-Foodstore.create!([{name: "North spices", foodcategory_id:Foodcategory.first.id }, {name: "Street Byte", foodcategory_id:Foodcategory.first.id }])
+FoodStore.create!([{name: "North spices", foodcategory_id:Foodcategory.first.id }, {name: "Street Byte", foodcategory_id:Foodcategory.first.id }])
 puts "Foodstores are created"
 
 User.create!(email: "sait1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Employee")
@@ -32,12 +32,12 @@ EmployeeProfile.create!(name: "Sai Ganesh", phone: "9014632028", company_id: Com
 puts "created employee profile"
 
 User.create!(email: "ganesht1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Chef")
-Chefprofile.create!(name: "Ganesh", phone: "9014632029", foodstore_id: Foodstore.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
+Chefprofile.create!(name: "Ganesh", phone: "9014632029", food_store_id: FoodStore.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created chef profile"
 
 User.create!(email: "tganeshs1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Normal Customer")
 NormalCustomer.create!(name: "SGani", phone: "9014632028", user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created normal cusomer profile"
 
-Fooditem.create!([{name: "Biryani", price: 220, description: "Authentic Chicken Biryani", foodstore_id: Foodstore.first.id}, {name: "Thali", price: 250, description: "Single server North Indian Thali", foodstore_id: Foodstore.first.id}])
+Fooditem.create!([{name: "Biryani", price: 220, description: "Authentic Chicken Biryani", food_store_id: FoodStore.first.id}, {name: "Thali", price: 250, description: "Single server North Indian Thali", food_store_id: FoodStore.first.id}])
 puts "Fooditems are created"
