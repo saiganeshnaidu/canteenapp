@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     return redirect_to root_path, flash: { danger: "Access denied !!!" } if !(logged_in? && customer? && validate_customer?) 
   end
 
-  def cart_list_access
+  def cart_item_access
     return redirect_to root_path, flash: { danger: "Access denied !!!" } if !((logged_in? && customer? && validate_customer?) || (logged_in? && employee? && validate_employee?) || admin?) 
   end
 

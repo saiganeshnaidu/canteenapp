@@ -1,6 +1,6 @@
 class Chefprofile < ApplicationRecord
   belongs_to :user
-  belongs_to :foodstore
+  belongs_to :food_store
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many_attached :pictures, dependent: :destroy
 

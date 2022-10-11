@@ -1,8 +1,8 @@
 <h2 class="text-center" style="color:Pink;"><%= @foodcategories.name %> </h2><br><br>
 
-<% if @foodcategories.foodstores.present? %>
+<% if @foodcategories.food_stores.present? %>
   <h3 class="text-center" >Available foodstores on above category</h3>
-  <% @foodcategories.foodstores.each do |f| %>
+  <% @foodcategories.food_stores.each do |f| %>
     <p>
       <h5><%= link_to f.name, [f.foodcategory, f], style:"text-decoration:none;"%> </h5> <br><br>
     </p>
@@ -11,7 +11,7 @@
 
 <h3 class="text-center" >Add a foodstore</h3>
 
-<%= form_with model: [ @foodcategories, @foodcategories.foodstores.build ] do |f| %>
+<%= form_with model: [ @foodcategories, @foodcategories.food_stores.build ] do |f| %>
   <div class="card-body">
     <div class="mb-3">
       <%= f.label :name, { class: "form-label"} %>

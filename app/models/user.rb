@@ -3,7 +3,7 @@ class User < ApplicationRecord
     has_one :normal_customer, dependent: :destroy
     has_one :chef_profile, dependent: :destroy, :class_name => "Chefprofile"
     has_many :carts, dependent: :destroy
-    has_one  :foodstore, through: :chefprofile
+    has_one  :food_store, through: :chefprofile
     has_one  :company, through: :employee_profile
     has_many :notifications, as: :recipient, dependent: :destroy
     has_many :messages

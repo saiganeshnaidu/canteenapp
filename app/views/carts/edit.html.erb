@@ -1,5 +1,5 @@
 <h2 class="text-center" > Order details </h2>
-<h4> <%= @cart.foodstore.name %> </h4>
+<h4> <%= @cart.food_store.name %> </h4>
 <table class="table" >
   <thread>
     <th> Item Name </th>
@@ -7,7 +7,7 @@
     <th>  Price </th>
   </thread>
   <tbody>
-    <% @cart.cart_lists.each do |x| %>
+    <% @cart.cart_items.each do |x| %>
       <tr> 
         <td> <%= x.fooditem.name %> </td>
         <td> <%= x.quantity %>  </td>

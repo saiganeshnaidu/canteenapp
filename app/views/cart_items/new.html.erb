@@ -9,7 +9,7 @@
       <p><%= x.description %> </p>
       <h6><%= x.price %></h6>
       <div class="d-flex ">
-        <%= form_with model: @cartlist do |form| %>
+        <%= form_with model: @cartitem do |form| %>
           <%= form.hidden_field :cart_id, value: @cartid.id %> 
           <%= form.hidden_field :fooditem_id, value: x.id %>
           Quantity <%= form.number_field :quantity, max: 5, min: 1, value: 0 %>
@@ -21,7 +21,7 @@
   </div>  
 <% end %>
 
-<%= link_to 'Finish Order', cart_lists_path(:cid => @cartid.id), class:"btn btn-secondary"  %>
+<%= link_to 'Finish Order', cart_items_path(:cid => @cartid.id), class:"btn btn-secondary"  %>
 
 
   

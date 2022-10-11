@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#omniauth'
 
   resources :foodcategories do
-    resources :foodstores do
+    resources :food_stores do
       resources :fooditems
     end
   end
@@ -45,9 +45,9 @@ Rails.application.routes.draw do
   resources :chefprofiles, only: [:index, :show, :edit, :update]
   resources :normal_customers, only: [:index, :show, :edit, :update]
   resources :carts
-  get 'cartmsg', to: "cart_lists#cartmsg"
+  get 'cartmsg', to: "cart_items#cartmsg"
 
-  resources :cart_lists
+  resources :cart_items
   resources :companies
   resources :registrations, only: [:edit, :update]
 

@@ -1,6 +1,6 @@
 <% Notification.all.reverse.each do |x|  %>
     <% if x.recipient_id== Current.user.chef_profile.id %>
-      <%= link_to User.find(x.params[:cart][:user_id]).email+" has ordered food on "+x.params[:cart].foodstore.name, edit_cart_path(x.params[:cart][:id])  %><br><br>
+      <%= link_to User.find(x.params[:cart][:user_id]).email+" has ordered food on "+x.params[:cart].food_store.name, edit_cart_path(x.params[:cart][:id])  %><br><br>
     <% end %>
 <% end %>
 

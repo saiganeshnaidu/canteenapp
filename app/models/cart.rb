@@ -1,7 +1,7 @@
 class Cart < ApplicationRecord
   belongs_to :user
-  belongs_to :foodstore
-  has_many :cart_lists, dependent: :destroy
+  belongs_to :food_store
+  has_many :cart_items, dependent: :destroy
   has_one  :room
   has_noticed_notifications model_name: 'Notification'
   has_many :notifications, through: :chefprofile, dependent: :destroy
@@ -11,8 +11,8 @@ class Cart < ApplicationRecord
 
   private
   def notify_recipient
-    OrderNotification.with(cart: self, foodstore: foodstore).deliver_later(foodstore.chefprofiles)
-    OrderNotification.with(cart: self, foodstore: foodstore).deliver_later(User.find_by(usertype: "Admin"))
+    OrderNotification.with(cart: self, food_store: food_store).deliver_later(food_store.chefprofiles)
+    OrderNotification.with(cart: self, food_store: food_store).deliver_later(User.find_by(usertype: "Admin"))
   end
 
   def notify_customer
@@ -22,5 +22,5 @@ class Cart < ApplicationRecord
 
   scope :myorder, ->{ where('user_id = ?', Current.user.id) }
 
-  scope :cheforder, ->{ where('carts.foodstore_id= ?', Current.user.chef_profile.foodstore.id) }
+  scope :cheforder, ->{ where('carts.food_store_id= ?', Current.user.chef_profile.food_store.id) }
 end

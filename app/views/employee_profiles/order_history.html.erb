@@ -3,12 +3,12 @@
   <div class="card history-card">
     <div class="card-body">
       <div class="order-details">
-        <h2> <%= x.foodstore.name %> </h2>
+        <h2> <%= x.food_store.name %> </h2>
         <h5> <%= x.order_status %>  </h4>
       </div>
       Ordered on:<%= x.created_at %>
-      <%= link_to "View menu", cart_lists_path(:cid=> x.id) %>
-      <% x.cart_lists.each do |y| %>
+      <%= link_to "View menu", cart_items_path(:cid=> x.id) %>
+      <% x.cart_items.each do |y| %>
         <% @v=Fooditem.find(y.fooditem_id) %>
         <% @total+= @v.price* y.quantity %> 
       <% end %> <br>

@@ -4,10 +4,10 @@ class FooditemsController < ApplicationController
   end
 
   def create
-    @foodstore = Foodstore.find(params[:foodstore_id])
+    @foodstore = FoodStore.find(params[:food_store_id])
     @fooditem = @foodstore.fooditems.create(item_params)
     if @fooditem.save
-      redirect_to foodcategory_foodstores_path
+      redirect_to foodcategory_food_stores_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -15,6 +15,6 @@ class FooditemsController < ApplicationController
 
   private
   def item_params
-    params.require(:fooditem).permit(:name, :price, :description, :foodstore_id, :item_image)
+    params.require(:fooditem).permit(:name, :price, :description, :food_store_id, :item_image)
   end
 end

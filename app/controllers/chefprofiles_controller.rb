@@ -4,7 +4,7 @@ class ChefprofilesController < ApplicationController
 
   def new
     @chef_pro=Chefprofile.new
-    @foodstore=Foodstore.all
+    @foodstore=FoodStore.all
   end
 
   def create
@@ -36,7 +36,7 @@ class ChefprofilesController < ApplicationController
   def show
     @heading="Chef Dashboard"
     @chef_pro=Chefprofile.find(params[:id])
-    @fstore=Foodstore.find(@chef_pro.foodstore_id)
+    @fstore=FoodStore.find(@chef_pro.food_store_id)
     @fcat=Foodcategory.find(@fstore.foodcategory_id)
   end
 
@@ -57,6 +57,6 @@ class ChefprofilesController < ApplicationController
   private
 
     def chef_params
-      params.require(:chefprofile).permit(:name, :phone, :user_id, :foodstore_id, :isapproved, :isrejected, pictures: [])
+      params.require(:chefprofile).permit(:name, :phone, :user_id, :food_store_id, :isapproved, :isrejected, pictures: [])
     end
 end

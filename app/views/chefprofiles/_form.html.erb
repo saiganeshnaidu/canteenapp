@@ -15,7 +15,7 @@
 
     <div class="form-outline mb-4">
       <%= form.label :foodstore %><br>
-      <%= collection_select(:chefprofile, :foodstore_id, Foodstore.all, :id, :name) %>
+      <%= collection_select(:chefprofile, :food_store_id, FoodStore.all, :id, :name) %>
     </div>
 
     <div class="text-center">
