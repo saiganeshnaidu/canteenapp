@@ -29,13 +29,13 @@ Rails.application.routes.draw do
   post 'chef_detail', to: 'chefprofiles#create'
   get 'employee_detail', to: 'employee_profiles#new'
   post 'employee_detail', to: 'employee_profiles#create'
-  get 'customer_detail', to: 'normal_customers#new'
-  post 'customer_detail', to: 'normal_customers#create'
+  get 'customer_detail', to: 'customers#new'
+  post 'customer_detail', to: 'customers#create'
   get '/noticee', to: "employee_profiles#noticee"
   get '/admin_notice', to: "welcome#admin_notice"
   get '/admin_dashboard', to: "welcome#admin_dashboard"
   get '/approvals', to: "welcome#approval"
-  get '/customer_notice', to: "normal_customers#customer_notice"
+  get '/customer_notice', to: "customers#customer_notice"
 
   resources :rooms do
     resources :messages
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   resources :employee_profiles, only: [:index, :show, :edit, :update]
   resources :chefprofiles, only: [:index, :show, :edit, :update]
-  resources :normal_customers, only: [:index, :show, :edit, :update]
+  resources :customers, only: [:index, :show, :edit, :update]
   resources :carts
   get 'cartmsg', to: "cart_items#cartmsg"
 

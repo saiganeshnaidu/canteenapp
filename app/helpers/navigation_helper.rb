@@ -10,7 +10,7 @@ module NavigationHelper
         elsif (customer? && validate_customer?)
           (link_to 'Order history', order_history_path, class: "#{style} header-space") +
           (link_to 'Notifications', customer_notice_path, class: "#{style} header-space") +
-          (link_to 'Dashboard', normal_customer_path(Current.user.normal_customer), class: "#{style} header-space")
+          (link_to 'Dashboard', customer_path(Current.user.customer), class: "#{style} header-space")
 
 
         elsif (chef? && validate_chef?)

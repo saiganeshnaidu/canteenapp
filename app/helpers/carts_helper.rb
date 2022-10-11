@@ -8,9 +8,9 @@ module CartsHelper
     end
 
     def validate_customer?
-        if customer? && Current.user.normal_customer && Current.user.normal_customer.isapproved
+        if customer? && Current.user.customer && Current.user.customer.isapproved
             true
-        elsif customer? && Current.user.normal_customer && !(Current.user.normal_customer.isapproved)
+        elsif customer? && Current.user.customer && !(Current.user.customer.isapproved)
             false
         end
     end
@@ -30,7 +30,7 @@ module CartsHelper
             @cur_validated_user=Current.user.chef_profile.isapproved
         elsif validate_customer?
 
-            @cur_validated_user=Current.user.normal_customer.isapproved
+            @cur_validated_user=Current.user.customer.isapproved
 
         end
     end

@@ -27,7 +27,7 @@
 <% if employee? %>
   <%= link_to "<-Goto dashboard", Current.user.employee_profile, class:"btn btn-primary" %>
 <% else %>
-  <%= link_to "Goto dashboard", Current.user.normal_customer, class:"btn btn-primary" %>
+  <%= link_to "Goto dashboard", Current.user.customer, class:"btn btn-primary" %>
 <% end %> <br><br>
 
 <% if !(@cartid.room) %>

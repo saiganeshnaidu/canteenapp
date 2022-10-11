@@ -11,7 +11,7 @@
 <% elsif chef? %>
   <%= link_to "Go to dashboard", Current.user.chef_profile, class:"btn btn-dark" %>
 <% elsif customer? %>
-  <%= link_to "Go to dashboard", Current.user.normal_customer, class:"btn btn-dark" %>
+  <%= link_to "Go to dashboard", Current.user.customer, class:"btn btn-dark" %>
 <% elsif admin? %>
   <%= link_to "Go to dashboard", admin_dashboard_path, class:"btn btn-dark" %>
 <% end %>

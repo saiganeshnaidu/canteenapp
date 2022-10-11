@@ -1,5 +1,5 @@
 <% Notification.all.reverse.each do |x| %>
-    <% if x.recipient_type=="NormalCustomer" && x.recipient_id == Current.user.normal_customer.id %> 
+    <% if x.recipient_type=="NormalCustomer" && x.recipient_id == Current.user.customer.id %> 
       <%= link_to "your order status from " + x.params[:cart].food_store.name + " restaurant has changed ", cart_items_path(:cid=> x.params[:cart][:id]) %> <br><br>
     <% end %>
 <% end %>

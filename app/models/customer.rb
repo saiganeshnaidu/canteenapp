@@ -1,4 +1,4 @@
-class NormalCustomer < ApplicationRecord
+class Customer < ApplicationRecord
   belongs_to :user
 
   has_many :notifications, as: :recipient, dependent: :destroy

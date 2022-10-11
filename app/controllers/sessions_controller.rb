@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
     elsif chef?
       redirect_to current_user.chef_profile, flash: { success: "Logged in successfully" }
     elsif customer?
-      redirect_to current_user.normal_customer, flash: { success: "Logged in successfully" }
+      redirect_to current_user.customer, flash: { success: "Logged in successfully" }
     end
   end
 end

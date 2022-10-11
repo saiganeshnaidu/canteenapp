@@ -1,14 +1,14 @@
-class NormalCustomersController < ApplicationController
+class CustomersController < ApplicationController
   before_action :admin?, only: [:edit, :update]
   before_action :customer?, only: [:show]
   before_action :customer_access, only: [:customer_notice]
 
   def new
-    @customer=NormalCustomer.new
+    @customer=Customer.new
   end
 
   def create
-    @customer = NormalCustomer.new(customer_params)
+    @customer = Customer.new(customer_params)
     if @customer.save
       redirect_to @customer
     else
@@ -24,7 +24,7 @@ class NormalCustomersController < ApplicationController
   end
     
   def update
-    @customer = NormalCustomer.find(params[:id])
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to approvals_path
     else
@@ -34,7 +34,7 @@ class NormalCustomersController < ApplicationController
 
   def show
     @heading="Customer Dashboard"
-    @customer=NormalCustomer.find(params[:id])
+    @customer=Customer.find(params[:id])
   end
 
   def customer_notice
@@ -42,6 +42,6 @@ class NormalCustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:normal_customer).permit(:name, :phone, :user_id, :isapproved, :isrejected)
+    params.require(:customer).permit(:name, :phone, :user_id, :isapproved, :isrejected)
   end
 end

@@ -26,6 +26,6 @@ module ApplicationHelper
   end
 
   def customer?
-    @is_customer ||= (role=="Ordinary people") if logged_in?
+    @is_customer ||= (role=="Customer") if logged_in?
   end    
 end

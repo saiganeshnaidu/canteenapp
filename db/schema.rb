@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_112656) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_11_121017) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +92,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_112656) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "phone", null: false
+    t.bigint "user_id", null: false
+    t.boolean "isapproved", default: false
+    t.boolean "isrejected", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
+  end
+
   create_table "employee_profiles", force: :cascade do |t|
     t.string "name", null: false
     t.string "phone", null: false
@@ -139,17 +150,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_112656) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "normal_customers", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "phone", null: false
-    t.bigint "user_id", null: false
-    t.boolean "isapproved", default: false
-    t.boolean "isrejected", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_normal_customers_on_user_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.string "recipient_type", null: false
     t.bigint "recipient_id", null: false
@@ -187,12 +187,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_112656) do
   add_foreign_key "carts", "users"
   add_foreign_key "chefprofiles", "food_stores"
   add_foreign_key "chefprofiles", "users"
+  add_foreign_key "customers", "users"
   add_foreign_key "employee_profiles", "companies"
   add_foreign_key "employee_profiles", "users"
   add_foreign_key "food_items", "food_stores"
   add_foreign_key "food_stores", "food_categories"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "normal_customers", "users"
   add_foreign_key "rooms", "carts"
 end

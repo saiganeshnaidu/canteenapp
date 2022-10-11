@@ -9,7 +9,7 @@
 User.delete_all
 EmployeeProfile.delete_all
 Chefprofile.delete_all
-NormalCustomer.delete_all
+Customer.delete_all
 FoodCategory.delete_all
 FoodStore.delete_all
 FoodItem.delete_all
@@ -28,15 +28,15 @@ FoodStore.create!([{name: "North spices", food_category_id:FoodCategory.first.id
 puts "Foodstores are created"
 
 User.create!(email: "sait1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Employee")
-EmployeeProfile.create!(name: "Sai Ganesh", phone: "9014632028", company_id: Company.first.id, user_id: User.last.id, isapproved: true, isrejected:false)
+EmployeeProfile.create!(name: "Sai Ganesh", phone: "9000632028", company_id: Company.first.id, user_id: User.last.id, isapproved: true, isrejected:false)
 puts "created employee profile"
 
 User.create!(email: "ganesht1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Chef")
-Chefprofile.create!(name: "Ganesh", phone: "9014632029", food_store_id: FoodStore.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
+Chefprofile.create!(name: "Ganesh", phone: "9014600000", food_store_id: FoodStore.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created chef profile"
 
-User.create!(email: "tganeshs1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Normal Customer")
-NormalCustomer.create!(name: "SGani", phone: "9014632028", user_id: User.last.id, isapproved: false, isrejected:false)
+User.create!(email: "tganeshs1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Customer")
+Customer.create!(name: "SGani", phone: "9014611111", user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created normal cusomer profile"
 
 FoodItem.create!([{name: "Biryani", price: 220, description: "Authentic Chicken Biryani", food_store_id: FoodStore.first.id}, {name: "Thali", price: 250, description: "Single server North Indian Thali", food_store_id: FoodStore.first.id}])

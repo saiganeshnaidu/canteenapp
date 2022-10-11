@@ -26,7 +26,7 @@
     <% invalid = check_errors(@user, :usertype) %>
     <div class="form-group">
       <%= form.label :usertype %>
-      <%= form.select :usertype, ['Employee', 'Chef', 'Ordinary people'] , class: "form-control #{'is-invalid' if invalid}", placeholder: "Enter your e-mail address" %>
+      <%= form.select :usertype, ['Employee', 'Chef', 'Customer'] , class: "form-control #{'is-invalid' if invalid}", placeholder: "Enter your e-mail address" %>
       <%= check_valid(@user, :usertype, invalid) %>
     </div>
 

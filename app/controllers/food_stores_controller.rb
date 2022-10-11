@@ -1,5 +1,5 @@
 class FoodStoresController < ApplicationController
-  before_action :foodstore_access
+  before_action :food_store_access
 
   def create
     @foodcategory = FoodCategory.find(params[:food_category_id])

@@ -17,7 +17,7 @@ class Cart < ApplicationRecord
 
   def notify_customer
     OrderNotification.with(cart: self, user: user).deliver_later(user.employee_profile)
-    OrderNotification.with(cart: self, user: user).deliver_later(user.normal_customer)
+    OrderNotification.with(cart: self, user: user).deliver_later(user.customer)
   end
 
   scope :myorder, ->{ where('user_id = ?', Current.user.id) }
