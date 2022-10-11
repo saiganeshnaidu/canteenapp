@@ -1,7 +1,7 @@
 <h2 class="text-center"> Menu </h2>
 <h4 style:"color:pink;"> <%= @foodstore.name %> </h4>   <br> 
 
-<% @foodstore.fooditems.each do |x| %>
+<% @foodstore.food_items.each do |x| %>
   <div class="d-flex food-item" >
     <%= image_tag(x.item_image, style:"width:200px; height:160px;") if x.item_image %>
     <div class="d-flex flex-column justify-content-between">
@@ -11,7 +11,7 @@
       <div class="d-flex ">
         <%= form_with model: @cartitem do |form| %>
           <%= form.hidden_field :cart_id, value: @cartid.id %> 
-          <%= form.hidden_field :fooditem_id, value: x.id %>
+          <%= form.hidden_field :food_item_id, value: x.id %>
           Quantity <%= form.number_field :quantity, max: 5, min: 1, value: 0 %>
           Add description <%= form.text_field :description, placeholder: 'Provide ingredients detail' %> 
           <%= form.submit "Add item to cart" %>

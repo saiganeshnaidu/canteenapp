@@ -9,11 +9,11 @@
   <tbody>
     <% @cart.cart_items.each do |x| %>
       <tr> 
-        <td> <%= x.fooditem.name %> </td>
+        <td> <%= x.food_item.name %> </td>
         <td> <%= x.quantity %>  </td>
-        <td><%= x.quantity * x.fooditem.price %> </td>    
+        <td><%= x.quantity * x.food_item.price %> </td>    
       </tr>
-      <% @total+=x.quantity * x.fooditem.price %>
+      <% @total+=x.quantity * x.food_item.price %>
     <% end %>
   </tbody>
 </table>

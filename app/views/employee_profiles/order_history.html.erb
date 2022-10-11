@@ -9,7 +9,7 @@
       Ordered on:<%= x.created_at %>
       <%= link_to "View menu", cart_items_path(:cid=> x.id) %>
       <% x.cart_items.each do |y| %>
-        <% @v=Fooditem.find(y.fooditem_id) %>
+        <% @v=FoodItem.find(y.food_item_id) %>
         <% @total+= @v.price* y.quantity %> 
       <% end %> <br>
       <strong> Total amount: </strong> <%= @total %> <br>

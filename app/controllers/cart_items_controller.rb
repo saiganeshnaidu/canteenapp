@@ -9,7 +9,7 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @cartitem = CartItem.new(list_params)
+    @cartitem = CartItem.new(cart_item_params)
     if @cartitem.save
       redirect_to new_cart_item_path, flash: { success: "Ited added to cart" }
     else
@@ -25,7 +25,7 @@ class CartItemsController < ApplicationController
      
   private
 
-    def list_params
-      params.require(:cart_item).permit(:cart_id, :fooditem_id, :quantity, :description)
+    def cart_item_params
+      params.require(:cart_item).permit(:cart_id, :food_item_id, :quantity, :description)
     end
 end

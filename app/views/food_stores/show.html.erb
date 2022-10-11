@@ -1,5 +1,5 @@
 <h2 class="text-center" style="color:Pink;"><%= @foodstore.name %> </h2> <br><br>
-<% if @foodstore.fooditems.present? %>
+<% if @foodstore.food_items.present? %>
   <h3 class="text-center">Food items </h3>
   <table class="table table-striped">
     <thread>
@@ -7,7 +7,7 @@
       <th>Item price </th>
       <th>Description </th>
     </thread>
-    <% @foodstore.fooditems.each do |f| %>
+    <% @foodstore.food_items.each do |f| %>
       <tbody>
         <tr>
           <td><%= f.name %></td>
@@ -21,7 +21,7 @@
     
 <h3 class="text-center" >Create new fooditem </h3>
 
-<%= form_with model:[@foodcategory,@foodstore, @foodstore.fooditems.build] do |f| %>
+<%= form_with model:[@foodcategory,@foodstore, @foodstore.food_items.build] do |f| %>
   <div class="card-body">
     <div class="mb-3">
       <%= f.label :name, { class: "form-label"} %>

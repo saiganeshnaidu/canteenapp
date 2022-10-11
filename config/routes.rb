@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :foodcategories do
     resources :food_stores do
-      resources :fooditems
+      resources :food_items
     end
   end
 

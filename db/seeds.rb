@@ -12,7 +12,7 @@ Chefprofile.delete_all
 NormalCustomer.delete_all
 Foodcategory.delete_all
 FoodStore.delete_all
-Fooditem.delete_all
+FoodItem.delete_all
 Company.delete_all
 
 User.create!(email:"ganeshadmin1@gmail.com", password:"997777@Sn", password_confirmation:"997777@Sn", usertype:"Admin")
@@ -39,5 +39,5 @@ User.create!(email: "tganeshs1@gmail.com", password: "997777@Sn", password_confi
 NormalCustomer.create!(name: "SGani", phone: "9014632028", user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created normal cusomer profile"
 
-Fooditem.create!([{name: "Biryani", price: 220, description: "Authentic Chicken Biryani", food_store_id: FoodStore.first.id}, {name: "Thali", price: 250, description: "Single server North Indian Thali", food_store_id: FoodStore.first.id}])
+FoodItem.create!([{name: "Biryani", price: 220, description: "Authentic Chicken Biryani", food_store_id: FoodStore.first.id}, {name: "Thali", price: 250, description: "Single server North Indian Thali", food_store_id: FoodStore.first.id}])
 puts "Fooditems are created"

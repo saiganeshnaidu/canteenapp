@@ -1,6 +1,6 @@
 class CartItem < ApplicationRecord
   belongs_to :cart
-  belongs_to :fooditem
+  belongs_to :food_item
   
   before_validation :check_cartlist
   
