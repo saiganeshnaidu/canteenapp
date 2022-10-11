@@ -8,7 +8,7 @@
 
 User.delete_all
 EmployeeProfile.delete_all
-Chefprofile.delete_all
+ChefProfile.delete_all
 Customer.delete_all
 FoodCategory.delete_all
 FoodStore.delete_all
@@ -32,7 +32,7 @@ EmployeeProfile.create!(name: "Sai Ganesh", phone: "9000632028", company_id: Com
 puts "created employee profile"
 
 User.create!(email: "ganesht1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Chef")
-Chefprofile.create!(name: "Ganesh", phone: "9014600000", food_store_id: FoodStore.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
+ChefProfile.create!(name: "Ganesh", phone: "9014600000", food_store_id: FoodStore.first.id, user_id: User.last.id, isapproved: false, isrejected:false)
 puts "created chef profile"
 
 User.create!(email: "tganeshs1@gmail.com", password: "997777@Sn", password_confirmation: "997777@Sn", usertype: "Customer")

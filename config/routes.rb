@@ -23,10 +23,10 @@ Rails.application.routes.draw do
   end
 
   get '/order_history', to: "employee_profiles#order_history"
-  get '/order', to: "chefprofiles#order"
-  get '/notice', to: "chefprofiles#notice"
-  get 'chef_detail', to: 'chefprofiles#new'
-  post 'chef_detail', to: 'chefprofiles#create'
+  get '/order', to: "chef_profiles#order"
+  get '/notice', to: "chef_profiles#notice"
+  get 'chef_detail', to: 'chef_profiles#new'
+  post 'chef_detail', to: 'chef_profiles#create'
   get 'employee_detail', to: 'employee_profiles#new'
   post 'employee_detail', to: 'employee_profiles#create'
   get 'customer_detail', to: 'customers#new'
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   end
 
   resources :employee_profiles, only: [:index, :show, :edit, :update]
-  resources :chefprofiles, only: [:index, :show, :edit, :update]
+  resources :chef_profiles, only: [:index, :show, :edit, :update]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :carts
   get 'cartmsg', to: "cart_items#cartmsg"

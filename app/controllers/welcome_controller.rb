@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
 
   def approval
     @emp_pros=EmployeeProfile.all
-    @chef_pros=Chefprofile.all
+    @chef_pros=ChefProfile.all
     @customers=Customer.all
   end
 

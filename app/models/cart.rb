@@ -11,7 +11,7 @@ class Cart < ApplicationRecord
 
   private
   def notify_recipient
-    OrderNotification.with(cart: self, food_store: food_store).deliver_later(food_store.chefprofiles)
+    OrderNotification.with(cart: self, food_store: food_store).deliver_later(food_store.chef_profiles)
     OrderNotification.with(cart: self, food_store: food_store).deliver_later(User.find_by(usertype: "Admin"))
   end
 

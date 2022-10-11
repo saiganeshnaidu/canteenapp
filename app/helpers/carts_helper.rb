@@ -29,7 +29,6 @@ module CartsHelper
         elsif validate_chef?
             @cur_validated_user=Current.user.chef_profile.isapproved
         elsif validate_customer?
-
             @cur_validated_user=Current.user.customer.isapproved
 
         end
