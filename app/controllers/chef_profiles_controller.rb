@@ -4,7 +4,6 @@ class ChefProfilesController < ApplicationController
 
   def new
     @chef_pro=ChefProfile.new
-    @foodstore=FoodStore.all
   end
 
   def create

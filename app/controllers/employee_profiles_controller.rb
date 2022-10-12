@@ -47,7 +47,6 @@ class EmployeeProfilesController < ApplicationController
   end
 
   def noticee
-
   end
 
   def destroy
