@@ -5,7 +5,6 @@
       <tr>
       <th>Food Category name</th>
       <th>Edit</th>
-      <th>Delete</th>
       </tr>
     </thread>
     <% @foodcategories.each do |x| %>
@@ -13,7 +12,6 @@
         <tr>
           <td> <%= link_to x.name, x, style:"text-decoration:none;"%>  </td>
           <td><%= link_to "Edit FoodCategory", edit_food_category_path(x), style:"text-decoration:none;" %> </td>
-          <td><%= button_to "Delete FoodCategory", x, method: :delete %> </td>
         </tr>
       </tbody>
     <% end %>

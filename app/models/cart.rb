@@ -4,7 +4,7 @@ class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_one  :room
   has_noticed_notifications model_name: 'Notification'
-  has_many :notifications, through: :chefprofile, dependent: :destroy
+  has_many :notifications, through: :chef_profile, dependent: :destroy
   
   after_create_commit :notify_recipient
   after_update_commit :notify_customer

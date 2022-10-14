@@ -5,13 +5,15 @@
     <th> Item Name </th>
     <th>  Quantity </th>
     <th>  Price </th>
+    <th>  Description </th>
   </thread>
   <tbody>
     <% @cart.cart_items.each do |x| %>
       <tr> 
         <td> <%= x.food_item.name %> </td>
         <td> <%= x.quantity %>  </td>
-        <td><%= x.quantity * x.food_item.price %> </td>    
+        <td><%= x.quantity * x.food_item.price %> </td>
+        <td><%= x.description if x.description%> </td>       
       </tr>
       <% @total+=x.quantity * x.food_item.price %>
     <% end %>
