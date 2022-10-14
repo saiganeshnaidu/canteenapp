@@ -43,7 +43,8 @@ class FoodCategoriesController < ApplicationController
   end
   
   private
-    def food_category_params
-      params.require(:food_category).permit(:name, :category_image)
-    end
+
+  def food_category_params
+    params.require(:food_category).permit(:name, :category_image)
+  end
 end

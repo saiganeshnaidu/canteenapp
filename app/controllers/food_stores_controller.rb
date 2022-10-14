@@ -20,7 +20,8 @@ class FoodStoresController < ApplicationController
   end
   
   private
-    def store_params
-      params.require(:food_store).permit(:name, :image)
-    end
+
+  def store_params
+    params.require(:food_store).permit(:name, :image)
+  end
 end

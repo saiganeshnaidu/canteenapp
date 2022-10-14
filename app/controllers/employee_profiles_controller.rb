@@ -51,15 +51,13 @@ class EmployeeProfilesController < ApplicationController
 
   def destroy
     @employee = EmployeeProfile.find(params[:id])
-    @user=User.find_by(@employee.user_id)
-    @user.destroy
     @employee.destroy
-    
     redirect_to root_path, status: :see_other
   end
 
   private
-    def emp_params
-      params.require(:employee_profile).permit(:name, :phone, :user_id, :company_id, :isapproved, :isrejected)
-    end
+
+  def emp_params
+    params.require(:employee_profile).permit(:name, :phone, :user_id, :company_id, :isapproved, :isrejected)
+  end
 end

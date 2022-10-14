@@ -28,13 +28,12 @@ class RoomsController < ApplicationController
 
   def destroy
     @room = Room.find(params[:id])
-    @messages = @room.messages.where(room_id: @room.id) 
-    @messages.each do |msg|
-      msg.destroy
-    end
+    @room.destroy
+    redirect_to root_path, status: :see_other
   end
   
   private
+  
   def room_params
     params.require(:room).permit(:cart_id)
   end

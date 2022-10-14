@@ -1,7 +1,7 @@
 class RegistrationsController < ApplicationController
   # instantiates new user
   def new
-    return redirect_to root_path, flash: { danger: "you are already logged in #{current_user.email}!!!" } if logged_in?
+    error_message
     @user = User.new
   end
 
@@ -50,8 +50,9 @@ class RegistrationsController < ApplicationController
   end
 
   private
-    def user_params
-      # strong parameters
-      params.require(:user).permit(:email, :password, :password_confirmation, :usertype)
-    end
+
+  def user_params
+    # strong parameters
+    params.require(:user).permit(:email, :password, :password_confirmation, :usertype)
+  end
 end

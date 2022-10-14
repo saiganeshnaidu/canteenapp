@@ -43,5 +43,9 @@ class ApplicationController < ActionController::Base
   def food_store_access
     return redirect_to root_path, flash: { danger: "Access denied !!!" } if !((logged_in? && chef? && validate_chef?) || admin?)
   end
+
+  def error_message
+    return redirect_to root_path, flash: { danger: "you are already logged in #{current_user.email}!!!" } if logged_in?
+  end
   
 end

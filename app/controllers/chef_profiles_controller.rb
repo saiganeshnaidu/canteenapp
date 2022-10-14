@@ -55,7 +55,7 @@ class ChefProfilesController < ApplicationController
 
   private
 
-    def chef_params
-      params.require(:chef_profile).permit(:name, :phone, :user_id, :food_store_id, :isapproved, :isrejected, pictures: [])
-    end
+  def chef_params
+    params.require(:chef_profile).permit(:name, :phone, :user_id, :food_store_id, :isapproved, :isrejected, pictures: [])
+  end
 end

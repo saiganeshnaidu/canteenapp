@@ -25,7 +25,7 @@ class CartItemsController < ApplicationController
      
   private
 
-    def cart_item_params
-      params.require(:cart_item).permit(:cart_id, :food_item_id, :quantity, :description)
-    end
+  def cart_item_params
+    params.require(:cart_item).permit(:cart_id, :food_item_id, :quantity, :description)
+  end
 end

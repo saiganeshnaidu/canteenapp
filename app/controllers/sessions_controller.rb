@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    return redirect_to root_path, flash: { danger: "you are already logged in #{current_user.email}!!!" } if logged_in?
+    error_message
   end
 
   def create
