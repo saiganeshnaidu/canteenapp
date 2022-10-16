@@ -4,7 +4,9 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "trix"
 import "@rails/actiontext"
-
+import "popper"
 import "bootstrap"
+
+import "@fortawesome/fontawesome-free"
 
 $(".alert" ).fadeOut(3000);

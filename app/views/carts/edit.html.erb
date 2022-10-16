@@ -1,5 +1,5 @@
 <h2 class="text-center" > Order details </h2>
-<h4> <%= @cart.food_store.name %> </h4>
+<h4> <%= @cart.food_store.name %> <i class="fa-solid fa-cart-shopping"></i> </h4>
 <table class="table" >
   <thread>
     <th> Item Name </th>
@@ -21,14 +21,16 @@
 </table>
     
 <div class="order-details">
-  <strong>Grand total:  <%= @total  %> </strong>
+<strong> Grand Total: <i class="fa-sharp fa-solid fa-indian-rupee-sign" style="padding-top:3px;"></i><%= @total %></strong>
   <strong> order status: <%= @cart.order_status %>  </strong> 
 </div> <br><br>
 
 <% if admin? %>
-  <%= link_to "Back", carts_path %>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, carts_path, class:"btn btn-primary" %>
+
 <% elsif chef? %>
-  <%= link_to "Back", order_path(Current.user.chef_profile) %>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, Current.user.chef_profile, class:"btn btn-primary" %>
+
 <% end %>
 
 

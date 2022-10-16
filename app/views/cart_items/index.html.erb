@@ -1,5 +1,5 @@
 <h2 class="text-center" > Order details </h2>
-<h4> <%= @cartid.food_store.name %> </h4>
+<h4> <%= @cartid.food_store.name %> <i class="fa-solid fa-cart-shopping"></i> </h4><br>
 
 <table class="table" >
   <thread>
@@ -20,14 +20,15 @@
 </table>
     
 <div class="order-details"> 
-  <strong>Grand total:  <%= @total  %> </strong>
-  <strong> order status: <%= @cartid.order_status %> </strong> 
+<strong> Total amount: <i class="fa-sharp fa-solid fa-indian-rupee-sign" style="padding-top:3px;"></i><%= @total %></strong>
+<strong> order status: <%= @cartid.order_status %> </strong> 
 </div> <br><br>
 
+<div class="order-details">
 <% if employee? %>
-  <%= link_to "<-Goto dashboard", Current.user.employee_profile, class:"btn btn-primary" %>
+  <%= link_to '<i class="fa-solid fa-arrow-left"></i> Goto dashboard'.html_safe, Current.user.employee_profile, class:"btn btn-primary" %>
 <% else %>
-  <%= link_to "Goto dashboard", Current.user.customer, class:"btn btn-primary" %>
+<%= link_to '<i class="fa-solid fa-arrow-left"></i> Goto dashboard'.html_safe, Current.user.customer, class:"btn btn-primary" %>
 <% end %> <br><br>
 
 <% if !(@cartid.room) %>
@@ -38,3 +39,4 @@
 <% else %>
   <%= link_to 'chat with chef', @cartid.room, class:"btn btn-primary" %>
 <% end %>
+</div>

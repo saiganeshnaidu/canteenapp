@@ -8,7 +8,7 @@
         <%=x.food_store.name %> restaurant
         <%= link_to "Open order", edit_cart_path(x) %> 
         <% if x.room %>
-          <%= link_to "MessageFromCustomer", x.room %> 
+          <%= link_to 'Message <i class="fa-solid fa-message"></i>'.html_safe, x.room, style:"text-decoration:none" %>
         <% end %> 
       </div>
       

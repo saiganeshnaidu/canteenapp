@@ -6,13 +6,13 @@
         <h2> <%= x.food_store.name %> </h2>
         <h5> <%= x.order_status %>  </h4>
       </div>
-      Ordered on:<%= x.created_at %>
-      <%= link_to "View menu", cart_items_path(:cid=> x.id) %>
+      Ordered on <%= x.created_at %>
+      <%= link_to "View menu", cart_items_path(:cid=> x.id), class:"btn btn-dark" %>
       <% x.cart_items.each do |y| %>
         <% @v=FoodItem.find(y.food_item_id) %>
         <% @total+= @v.price* y.quantity %> 
       <% end %> <br>
-      <strong> Total amount: </strong> <%= @total %> <br>
+      <h6> Total amount: <i class="fa-sharp fa-solid fa-indian-rupee-sign" style="padding-top:3px;"></i><%= @total %></h6> <br>
     </div>
   </div>
 <% end %>

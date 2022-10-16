@@ -20,7 +20,7 @@ module NavigationHelper
 
          elsif admin?
           (link_to 'All Orders', carts_path, class: "#{style} header-space") +
-          (link_to 'Show Notifications', admin_notice_path, class: "#{style} header-space") +
+          (link_to ' Notifications', admin_notice_path, class: "#{style} header-space") +
           (link_to 'Dashboard', admin_dashboard_path, class: "#{style} header-space")
 
         end

@@ -3,11 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.0"
 
-gem "noticed", "~> 1.5"
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 gem 'bootstrap', '~> 5.1.3'
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem "noticed", "~> 1.5"
 gem 'omniauth', '~> 2.1'
 gem 'omniauth-facebook', '~> 9.0'
 gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'

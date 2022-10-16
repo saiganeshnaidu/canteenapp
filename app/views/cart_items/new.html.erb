@@ -7,7 +7,7 @@
     <div class="d-flex flex-column justify-content-between">
       <h5><%= x.name %> </h5>
       <p><%= x.description %> </p>
-      <h6><%= x.price %>/-</h6>
+      <h6><i class="fa-sharp fa-solid fa-indian-rupee-sign" style="padding-top:3px; padding-right:3px;"></i><%= x.price %></h6>
       <div class="d-flex ">
         <%= form_with model: @cartitem do |form| %>
           <%= form.hidden_field :cart_id, value: @cartid.id %> 
