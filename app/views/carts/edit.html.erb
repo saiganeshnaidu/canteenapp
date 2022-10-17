@@ -21,16 +21,14 @@
 </table>
     
 <div class="order-details">
-<strong> Grand Total: <i class="fa-sharp fa-solid fa-indian-rupee-sign" style="padding-top:3px;"></i><%= @total %></strong>
+  <strong> Grand Total: <i class="fa-sharp fa-solid fa-indian-rupee-sign" style="padding-top:3px;"></i><%= @total %></strong>
   <strong> order status: <%= @cart.order_status %>  </strong> 
 </div> <br><br>
 
 <% if admin? %>
   <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, carts_path, class:"btn btn-primary" %>
-
 <% elsif chef? %>
   <%= link_to '<i class="fa-solid fa-arrow-left"></i> Back'.html_safe, Current.user.chef_profile, class:"btn btn-primary" %>
-
 <% end %>
 
 

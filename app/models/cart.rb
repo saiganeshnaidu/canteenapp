@@ -10,6 +10,7 @@ class Cart < ApplicationRecord
   after_update_commit :notify_customer
 
   private
+  
   def notify_recipient
     OrderNotification.with(cart: self, food_store: food_store).deliver_later(food_store.chef_profiles)
     OrderNotification.with(cart: self, food_store: food_store).deliver_later(User.find_by(usertype: "Admin"))

@@ -25,18 +25,18 @@
 </div> <br><br>
 
 <div class="order-details">
-<% if employee? %>
-  <%= link_to '<i class="fa-solid fa-arrow-left"></i> Goto dashboard'.html_safe, Current.user.employee_profile, class:"btn btn-primary" %>
-<% else %>
-<%= link_to '<i class="fa-solid fa-arrow-left"></i> Goto dashboard'.html_safe, Current.user.customer, class:"btn btn-primary" %>
-<% end %> <br><br>
+  <% if employee? %>
+    <%= link_to '<i class="fa-solid fa-arrow-left"></i> Goto dashboard'.html_safe, Current.user.employee_profile, class:"btn btn-primary" %>
+  <% else %>
+    <%= link_to '<i class="fa-solid fa-arrow-left"></i> Goto dashboard'.html_safe, Current.user.customer, class:"btn btn-primary" %>
+  <% end %> 
 
-<% if !(@cartid.room) %>
-  <%= form_with model: @room do |form| %>
-    <%= form.hidden_field :cart_id, value: @cartid.id %> <br><br>
-    <%= form.submit 'Start messaging chef' %>
+  <% if !(@cartid.room) %>
+    <%= form_with model: @room do |form| %>
+      <%= form.hidden_field :cart_id, value: @cartid.id %> 
+      <%= form.submit 'Start messaging chef' %>
+    <% end %>
+  <% else %>
+    <%= link_to 'chat with chef', @cartid.room, class:"btn btn-primary" %>
   <% end %>
-<% else %>
-  <%= link_to 'chat with chef', @cartid.room, class:"btn btn-primary" %>
-<% end %>
 </div>
