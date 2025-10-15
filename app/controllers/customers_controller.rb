@@ -13,10 +13,14 @@ class CustomersController < ApplicationController
       redirect_to @customer
     else
       render :new, status: :unprocessable_entity
-    end    
+    end
   end
 
   def index
+    @users = User.all
+    respond_to do |format|
+      format.xlsx
+    end
   end
 
   def edit
