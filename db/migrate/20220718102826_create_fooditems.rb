@@ -4,7 +4,7 @@ class CreateFooditems < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :price
       t.text :description
-      t.references :food_store, null: false, :class_name => 'FoodStore', :foreign_key=> 'food_store_id'
+      t.references :foodstore, null: false, :class_name => 'FoodStore', :foreign_key=> 'food_store_id'
 
       t.timestamps
     end

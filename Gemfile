@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.0"
+ruby '3.2.2'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 gem 'bootstrap', '~> 5.1.3'
@@ -63,12 +63,24 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails', '~> 7.0.0'
+  gem 'factory_bot', '~> 6.4', '>= 6.4.6'
 end
+
+  gem 'elasticsearch-model'
+  gem 'elasticsearch-rails'
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
+  gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.11'
+  gem 'daemons', '~> 1.3'
+
+  gem 'caxlsx'
+  gem 'caxlsx_rails'
+  gem 'nokogiri', '~> 1.18', '>= 1.18.9'
+  gem 'rspec', '~> 3.4'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
