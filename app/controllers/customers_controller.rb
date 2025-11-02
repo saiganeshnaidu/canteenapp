@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   before_action :customer_access, only: [:customer_notice]
 
   def new
-    @customer=Customer.new
+    @customer = Customer.new
   end
 
   def create
