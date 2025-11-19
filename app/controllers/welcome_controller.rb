@@ -32,6 +32,7 @@ class WelcomeController < ApplicationController
 
 
   def approval
+    # API query cacheing to prevent repeated DB querying
     # This will check if employee_profiles key exists in redis cache if not then it will execute code inside the block
     @emp_pros = Rails.cache.fetch("employee_profiles", expires_in: 10.minutes) do
       EmployeeProfile.all
