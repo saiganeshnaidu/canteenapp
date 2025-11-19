@@ -5,3 +5,23 @@
   <%= link_to "Export Users to Excel", customers_path(format: :xlsx), class:"btn btn-primary" %>
 
 </div>
+
+<div class="input-group mt-3 d-flex">
+  <input type="text" id="global-search-input" class="form-control" placeholder="Search globally...">
+  <button id="global-search-btn" class="btn btn-primary">Search</button>
+</div>
+
+<div id="search-results"></div>
+
+<script>
+  document.getElementById("global-search-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+    const query = document.getElementById("global-search-input").value;
+
+    fetch(`/global_search?q=${encodeURIComponent(query)}`, {
+      headers: { 'Accept': 'text/javascript' }
+    })
+    // .then(response => response.text())
+    // .then(jsCode => eval(jsCode)); // Rails will respond with JS (global_search.js.erb)
+  });
+</script>

@@ -1,0 +1,13 @@
+<% if results.any? %>
+  <% results.each do |r| %>
+    <div class="border p-2 mb-2">
+      <% if r.is_a?(User) %>
+        👤 <strong>User:</strong> <%= r.email %> (<%= r.email %>)
+      <% elsif r.is_a?(FoodItem) %>
+        🍕 <strong>Food:</strong> <%= r.name %> - <%= r.name %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No results found.</p>
+<% end %>

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get '/admin_notice', to: "welcome#admin_notice"
   get '/admin_dashboard', to: "welcome#admin_dashboard"
   get '/approvals', to: "welcome#approval"
+  get 'global_search', to: 'welcome#global_search', as: :global_search
   get '/customer_notice', to: "customers#customer_notice"
 
   resources :rooms do
