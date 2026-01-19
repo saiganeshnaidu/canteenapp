@@ -3,7 +3,7 @@
 <div class="full-store">
   <% @foodstore.each do |x| %>  
     <div class="card store" style="width: 15rem;">
-      <%= image_tag(x.image, style:"width:13rem; height:220px;") if x.image %>
+      <%= image_tag(x.image, style:"width:13rem; height:220px;") if x.image.present? %>
       <div class="card-body">
         <%= link_to x.name, new_cart_path(:sid => x.id), class:"btn btn-primary"%>
       </div>

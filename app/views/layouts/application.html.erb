@@ -21,6 +21,10 @@
 
   <body>
     <%= render 'layouts/navbar' %>
+    <% if current_user.present? %>
+      <%= turbo_stream_from current_user.employee_profile %>
+      <div id="notifications"></div>
+    <% end %>
     <% flash.each do |type, msg| %>
       <div class="alert alert-<%= type %>">
         <%= msg %>

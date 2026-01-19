@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.save    
+    @message.save
   end
 
   def index 

@@ -1,0 +1,5 @@
+<div class="live-alert"
+     data-controller="auto-remove"
+     data-auto-remove-time-value="3000">
+  The status of your order <%= notification.params[:cart].id %> has been changed to <%= notification.params[:cart].order_status.capitalize %>.
+</div>

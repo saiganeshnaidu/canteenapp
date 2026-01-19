@@ -1,0 +1,10 @@
+<div class="alert alert-info mb-2">
+  <strong>Order <%= notification.params[:cart].id %></strong>
+  status updated to:
+  <%= notification.params[:cart].order_status %>
+
+  <br>
+  <small>
+    From: <%= notification.params[:user].email %>
+  </small>
+</div>
