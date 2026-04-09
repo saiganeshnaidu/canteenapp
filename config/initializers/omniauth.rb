@@ -3,7 +3,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, '3292964137655412', '512d2da75134b740678bbe6aed8fd392',
+  provider :facebook, ENV['FACEBOOK_CLIENT_ID'], ENV['FACEBOOK_CLIENT_SECRET'],
   scope: 'email,read_stream', display: 'popup'
 
 end
