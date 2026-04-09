@@ -48,6 +48,7 @@
 
 class User < ApplicationRecord
   include Searchable
+  include Testable
 
   mapping do
     indexes :email, type: :text
